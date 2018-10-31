@@ -1,0 +1,90 @@
+<import src="../../../template/pageHeader.wxml"/>
+<wxs module="common" src="../../../utils/common.wxs"></wxs>
+<view class="main-container">
+  <template is="pageHeader" data="{{...title}}"/>
+
+<view class="menu-list dark-green">
+	<navigator url="../../question/gender/gender?postUpdate=true">
+		<view class="menu-item">
+			<image class="title-icon" src="{{itemIconUrl}}"/>
+			<view class="menu-item-title">性别</view>
+			<view class="right-content">
+				<text>{{userBodyInfo.gender}}</text>
+			</view>
+		</view>
+	</navigator>
+	<navigator url="../../question/birth/birth?postUpdate=true">
+		<view class="menu-item">
+			<image class="title-icon" src="{{itemIconUrl}}"/>
+			<view class="menu-item-title">生日</view>
+			<view class="right-content">
+				<text>{{userBodyInfo.birth}}</text>
+			</view>
+		</view>
+	</navigator>
+	<navigator url="../../question/height/height?postUpdate=true">
+		<view class="menu-item">
+			<image class="title-icon" src="{{itemIconUrl}}"/>
+			<view class="menu-item-title">身高</view>
+			<view class="right-content">
+				<text>{{userBodyInfo.height}}</text>
+			</view>
+		</view>
+	</navigator>
+	<navigator url="../../question/weight/weight?postUpdate=true">
+		<view class="menu-item">
+			<image class="title-icon" src="{{itemIconUrl}}"/>
+			<view class="menu-item-title">体重</view>
+			<view class="right-content">
+				<text>{{userBodyInfo.weight}}</text>
+			</view>
+		</view>
+	</navigator>
+	<navigator url="../../question/sportRate/sportRate?postUpdate=true">
+		<view class="menu-item">
+			<image class="title-icon" src="{{itemIconUrl}}"/>
+			<view class="menu-item-title">日常体力活动程度</view>
+			<view class="right-content">
+				<text>{{userBodyInfo.sportRate}}</text>
+			</view>
+		</view>
+	</navigator>
+	<navigator url="../../question/nephroticPeriod/nephroticPeriod?postUpdate=true">
+		<view class="menu-item">
+			<image class="title-icon" src="{{itemIconUrl}}"/>
+			<view class="menu-item-title">肾脏病阶段</view>
+			<view class="right-content">
+				<text>第{{userBodyInfo.nephroticPeriod}}期</text>
+			</view>
+		</view>
+	</navigator>
+  <navigator url="../../question/treatmentMethod/treatmentMethod?postUpdate=true">
+		<view class="menu-item">
+			<image class="title-icon" src="{{itemIconUrl}}"/>
+			<view class="menu-item-title">目前治疗方式</view>
+			<image class="next-icon" src="{{arrowIconUrl}}" />
+		</view>
+	</navigator>
+	<navigator url="../../question/otherDisease/otherDisease?postUpdate=true">
+		<view class="menu-item">
+			<image class="title-icon" src="{{itemIconUrl}}"/>
+			<view class="menu-item-title">其他併发疾病</view>
+			<image class="next-icon" src="{{arrowIconUrl}}" />
+		</view>
+	</navigator>
+	<navigator url="../../question/irritability/irritability?postUpdate=true">
+		<view class="menu-item">
+			<image class="title-icon" src="{{itemIconUrl}}"/>
+			<view class="menu-item-title">过敏症</view>
+			<image class="next-icon" src="{{arrowIconUrl}}" />
+		</view>
+	</navigator>
+</view>
+<loading hidden="{{hiddenLoading}}">正在加载</loading>
+	<view class="nextButtonView">
+    <button 
+      bindtap='updateBodyInfo' 
+      class='nextQuestionButton'>{{updateBodyInfoBtnText}}</button>
+  </view>
+
+</view>

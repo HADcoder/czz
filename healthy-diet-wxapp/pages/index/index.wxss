@@ -1,0 +1,76 @@
+/**index.wxss**/
+.header-backgroup {
+  width: 100%;
+  height: 150rpx;
+  background-color: #4cb16f;
+  margin: 0;
+}
+.userinfo-before {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top:-120rpx;
+  margin-bottom: 30rpx;
+}
+.logo_btn{
+  border-radius: 50%;
+  padding:0;
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.userinfo-avatar {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+.basicInfoResult {
+  text-align: right;
+}
+
+button {
+  color: #20492e;
+}
+
+
+.userinfo-nickname {
+  color: #20492e;
+}
+
+.questionButtonView {
+  margin-top: 70rpx; 
+}
+.questionButton {
+   border-radius: 40rpx;
+  color: #ffffff;
+  background-color: #4cb16f;
+}
+
+.slogon2 {
+  padding-top: 30rpx;
+  line-height: 2rem;
+  font-size: 52rpx;
+}
+.slogon1 {
+  font-weight: bold;
+  font-size: 52rpx;
+  margin: 60rpx 20rpx;
+  padding: 10rpx;
+  border-top:1px solid #20492e;
+  border-bottom:1px solid #20492e;
+}
+
+
+/* 4 grid tab */
+.gridTab {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: stretch;
+  text-align: center;
+  width: 90%;
+  margin-top: 20rpx;
+}
+

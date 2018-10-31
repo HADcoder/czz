@@ -1,0 +1,44 @@
+<!--pages/summary/summary.wxml-->
+<view class="report-header">
+	<text>{{reportHeader}}</text>
+</view>
+
+<view class="question-container">
+<text class="session-title">{{basicInfoTitle}}</text>
+<text class="session-sub-title">{{basicInfoSubTitle}}</text>
+  <view class="gridTab">
+	<block wx:for="{{basicInfoSummary}}" wx:key="name">
+		<view class="tab-box">
+			<view class="mini-tab-header">{{item.name}}</view>
+			<view class="mini-tab-info">{{item.value}}</view>
+		</view>
+	</block>
+  </view>
+
+    <view class="bar-char">
+      <text class="session-title">{{barChartTitle}}</text>
+      <text class="session-sub-title">{{barChartSubTitle}}</text>
+      <canvas 
+        canvas-id="columnCanvas" 
+        class="canvas" bindtouchstart="touchHandler">
+      </canvas>
+      <text class="session-sub-title">{{advice}}</text>
+    </view>
+
+    <view class="slogan">
+      <text>{{slogan}}</text>
+    </view>
+    <view class="fixSlogan">
+      <text>{{footerSlogan}}</text>
+    </view>
+
+    <view class="summaryReportButtonView">
+      <button bindtap='goBackMain' id='goBackMain'>{{goBackMain}}</button>
+      <button catchtap="onShareAppMessage" open-type="share" id='goShare'>{{goShare}}</button>
+    </view>
+</view>
+
+
+
+
+

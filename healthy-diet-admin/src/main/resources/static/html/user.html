@@ -1,0 +1,82 @@
+<div class="layui-fluid" style="margin-top: 20px">
+
+    <div class="layui-card layadmin-header" style="height:30px">
+        <div class="layui-breadcrumb" lay-filter="breadcrumb" style="visibility: visible;">
+            <a lay-href="">主页</a><span lay-separator="">/</span>
+            <a><cite>高级</cite></a><span lay-separator="">/</span>
+            <a><cite>Echarts集成</cite></a><span lay-separator="">/</span>
+            <a><cite>折线图</cite></a>
+        </div>
+    </div>
+
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layuiadmin-app-forum-reply" style="height: 53px">
+
+            <div class="layui-form-item" >
+                <div class="layui-inline layuiadmin-input-useradmin">
+                    <label class="layui-form-label">用户名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="replyer" placeholder="请输入" autocomplete="off" class="layui-input" ng-model="userName">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">类型</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="content" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layuiadmin-btn-replys" data-type="reload"  lay-filter="LAY-app-forumreply-search" ng-click="doSearch()">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="layui-card-body">
+            <div style="padding-bottom: 10px;">
+                <button class="layui-btn layuiadmin-btn-replys" data-type="batchdel">删除</button>
+            </div>
+            <table  class="layui-table">
+                <colgroup>
+                    <col width="150">
+                    <col width="200">
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                <tr >
+                    <th>账号</th>
+                    <th>姓名</th>
+                    <th>用户类型</th>
+                    <th>创建人</th>
+                    <th>创建时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="user in userLists">
+                    <td>{{user.account}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.type}}</td>
+                    <td>{{user.createDate}}</td>
+                    <td>{{user.creator}}</td>
+                </tr>
+                <tr>
+                    <td>许闲心</td>
+                    <td>2016-11-28</td>
+                    <td>2016-11-28</td>
+                    <td>2016-11-28</td>
+                    <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+                </tr>
+                </tbody>
+            </table>
+            <div id="test1"></div>
+        </div>
+
+    </div>
+</div>
+<script>
+
+</script>

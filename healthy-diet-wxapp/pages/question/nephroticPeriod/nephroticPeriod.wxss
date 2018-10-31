@@ -1,0 +1,4 @@
+/* pages/question/nephroticPeriod/nephroticPeriod.wxss */
+page{
+  background-color: #ffffff;
+}

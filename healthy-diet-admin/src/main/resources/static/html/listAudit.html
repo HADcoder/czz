@@ -1,0 +1,109 @@
+<div class="layui-fluid" style="margin-top: 20px">
+
+    <div class="layui-card layadmin-header" style="height:30px">
+        <div class="layui-breadcrumb" lay-filter="breadcrumb" style="visibility: visible;">
+            <a lay-href="">审核列表</a>
+        </div>
+    </div>
+
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layuiadmin-app-forum-reply" style="height: 53px">
+
+            <div class="layui-form-item" >
+                <div class="layui-inline layuiadmin-input-useradmin">
+                    <label class="layui-form-label">回帖人</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="replyer" placeholder="请输入" autocomplete="off" class="layui-input" ng-model="remark">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">回帖内容</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="content" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layuiadmin-btn-replys" ng-click="getAll()">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="layui-card-body">
+            <div style="padding-bottom: 10px;">
+                <button class="layui-btn layuiadmin-btn-replys" data-type="batchdel">删除</button>
+            </div>
+            <table class="layui-table">
+                <colgroup>
+                    <col width="150">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>电房名称</th>
+                    <th>工单状态</th>
+                    <th>创建人</th>
+                    <th>创建时间</th>
+                    <th>结束人</th>
+                    <th>结束时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>天河电房</td>
+                    <td>审核中</td>
+                    <td>李白</td>
+                    <td>2016-11-29</td>
+                    <td>李白</td>
+                    <td>2016-11-29</td>
+                </tr>
+                <tr>
+                    <td>天河电房</td>
+                    <td>审核中</td>
+                    <td>李白</td>
+                    <td>2016-11-29</td>
+                    <td>李白</td>
+                    <td>2016-11-29</td>
+                </tr>
+                </tbody>
+            </table>
+            <div id="test1"></div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    var laypage;
+    layui.use('laypage', function(){
+        laypage = layui.laypage;
+        laypage.render({
+            elem: 'test1'
+            ,count: 100
+            ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+            ,jump: function(obj){
+                console.log(obj)
+            }
+        });
+    });
+
+
+    // laypage.render({
+    //     elem: 'test1'
+    //     ,count: 70 //数据总数，从服务端得到
+    //     ,jump: function(obj, first,last){
+    //         //obj包含了当前分页的所有参数，比如：
+    //         console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+    //         console.log(obj.limit); //得到每页显示的条数
+    //
+    //         //首次不执行
+    //         if(!first){
+    //             //do something
+    //         }
+    //     }
+    // });
+</script>

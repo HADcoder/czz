@@ -1,0 +1,103 @@
+<div class="layui-fluid" style="margin-top: 20px;">
+    <div class="layui-card layadmin-header" style="height:30px">
+        <div class="layui-breadcrumb" lay-filter="breadcrumb" style="visibility: visible;">
+            <a lay-href="">主页</a><span lay-separator="">/</span>
+            <a><cite>高级</cite></a><span lay-separator="">/</span>
+            <a><cite>Echarts集成</cite></a><span lay-separator="">/</span>
+            <a><cite>折线图</cite></a>
+        </div>
+    </div>
+
+
+    <form class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+        <div class="layui-form-item">
+            <label class="layui-form-label">省</label>
+            <div class="layui-input-inline">
+                <select name="interest" lay-filter="province">
+                    <option value="0">广东省</option>
+                </select>
+            </div>
+
+            <label class="layui-form-label">市</label>
+            <div class="layui-input-inline">
+                <select name="interest" lay-filter="city">
+                    <option value="0">广州市</option>
+                </select>
+            </div>
+
+            <label class="layui-form-label">区</label>
+            <div class="layui-input-inline">
+                <select lay-filter="area"  ng-model="area" >
+                    <option value="0">天河区</option>
+                    <option value="1">白云区</option>
+                    <option value="2">荔湾区</option>
+                    <option value="3">增城区</option>
+                </select>
+            </div>
+        </div>
+
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">变电站</label>
+            <div class="layui-input-inline">
+                <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
+
+            <label class="layui-form-label">馈线</label>
+            <div class="layui-input-inline">
+                <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">电房名称</label>
+            <div class="layui-input-inline">
+                <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
+
+            <label class="layui-form-label">电房ID</label>
+            <div class="layui-input-inline">
+                <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
+
+            <label class="layui-form-label">电房类型</label>
+            <div class="layui-input-inline">
+                <select name="interest" lay-filter="station" ng-model="station">
+                    <option value="1">开关房</option>
+                    <option value="2">低压配电房</option>
+                    <option value="3">公变房</option>
+                    <option value="4">综合房</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">通讯协议</label>
+            <div class="layui-input-block">
+                <input type="radio" name="sex" value="1" title="mqtt" lay-filter="pd" ng-model="pd">
+                <input type="radio" name="sex" value="2" title="104" lay-filter="pd" ng-model="pd">
+                <input type="radio" name="sex" value="3" title="coap" lay-filter="pd" ng-model="pd">
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">电房地址</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <!--<button class="layui-btn" lay-submit lay-filter="*">立即提交</button>-->
+                <button class="layui-btn" ng-click="addStation()">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+        <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+    </form>
+</div>
+<script>
+
+</script>

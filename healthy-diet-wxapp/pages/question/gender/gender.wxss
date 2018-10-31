@@ -1,0 +1,28 @@
+/* pages/question-sex/question-sex.wxss */
+/* Part 2 question*/
+page{
+  background-color: #ffffff;
+}
+
+.parameter-wrap {
+  padding: 140rpx 50rpx;
+}
+.parameter-info {
+  padding: 60rpx;
+  margin: 40rpx;
+  border: 3rpx solid #4cb16f;
+  border-radius: 50%;
+  font-style: bold;
+  font-size: 60rpx;
+}
+.parameter-info:hover {
+  border: 5rpx solid #4cb16f;
+}
+.checked_parameter {
+  font-style: bold;
+  background: #4cb16f;
+  color: #f2f3fd;
+}
+
+
+

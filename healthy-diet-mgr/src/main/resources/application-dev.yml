@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/health_diet?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: root
+#    h2:
+#      console:
+#        enabled: true
+#        path: /h2
+#        settings:
+#          web-allow-others: true
+#    datasource:
+#        type: com.alibaba.druid.pool.DruidDataSource
+#        driverClassName: org.h2.Driver
+#        url: jdbc:h2:file:~/test
+#        username: sa
+#        password: 1234564
+#    redis:
+#         database: 0
+#         host: 127.0.0.1
+#         port: 6379
+#         password: # 密码（默认为空）
+app:
+  appId: "wxee68d8ad9d55b7e6"
+  appSecret: "6865b3abc9dbe4604744d947ea0d3438"

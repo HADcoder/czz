@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>肾病健康营养师</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+
+    <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="js/jquery.slides.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#slides').slidesjs({
+                width: 1210,
+                height: 315,
+                navigation: false,
+                pagination: {
+                    active: false,
+                },
+                play: {
+                    active: false,
+                    effect: "fade",
+                    interval: 5000,
+                    auto: false
+                }
+            });
+        })
+        function showDetail(idx) {
+            sessionStorage.setItem("articleId", idx);
+            window.location.href = "articledetail.html"
+        }
+    </script>
+</head>
+<body>
+<!---start-wrap--->
+<div class="wrap">
+    <!---start-header--->
+    <div class="header">
+        <!---start-logo--->
+        <div class="logo" style="width: 100%;">
+            <div style="float: left;">
+                <a href="index.html">
+                    <img src="images/logo.png" title="logo" style="width:80px;"/>
+                </a>
+            </div>
+            <div style="height: 85px;position: relative;float: left;">
+                <div style="font-size: 43px;color: #60B001;font-weight: bold;position: absolute;width: 500px;bottom: 0;">肾病健康营养师</div>
+            </div>
+        </div>
+        <!---End-logo--->
+        <div class="clear"></div>
+        <!---End-head-social-icons--->
+        <!---start-top-nav---->
+        <div class="top-nav">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="article.html">肾病常识</a></li>
+                <li><a href="recipe.html">健康食谱</a></li>
+                <li><a href="about.html">关于我</a></li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <!---End-top-nav---->
+    </div>
+    <!---End-header--->
+    <!---start-main---->
+    <div class="main">
+        <!---start-Content---->
+        <div class="main-content" style="position: relative;">
+            <div class="image-slider">
+                <div class="container">
+                    <div id="slides">
+                        <img src="images/idx_title_01.jpg" alt="">
+                        <img src="images/idx_title_02.png" alt="">
+                        <!--<img src="images/slider3.jpg" alt="">-->
+                        <!--<img src="images/slider4.jpg" alt="">-->
+                        <a href="#" class="slidesjs-next slidesjs-navigation">
+                            <i class="icon-chevron-right icon-large"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div style="position: absolute;top: 35px; right: 20%;z-index: 999;">
+                <div style="text-align: right;line-height: 40px;color: #332A21;">
+                    <p style="font-family: LiSu;font-size: 35px;color: #ff9f00">让食物成为你的药物，而不是让药物成为你的食物</p>
+                    <p style="font-family: KaiTi;font-size: 25px;color: #1E9FFF;">——希波克拉底</p>
+                    <p style="font-family: KaiTi;font-size: 25px;color: #1E9FFF;">现代医学之父</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="Latest-news">
+                <div class="artical-heading" style="margin-top: 10px;">
+                    <h3>最新动态</h3>
+                    <div class="clear"></div>
+                </div>
+                <div class="blog-articals">
+                    <div class="artical">
+                        <div class="artical-box">
+                            <div class="artical-img">
+                                <a href="#"><img src="images/idx_list_01.jpg" /></a>
+                            </div>
+                            <div class="artical-info">
+                                <div class="artical-heading">
+                                    <span>肾病的早期症状</span>
+                                    <div class="clear"></div>
+                                </div>
+                                <p>
+                                    一般情况下，早期糖尿病肾病症状有以下列表现：<br/>
+                                    1、疲乏无力，脸发黄、食欲不振等。多数肾功能不全疾病患者早期会有这些表现，但人们却常常觉得这可能与体质虚或者休息不佳有关，而忽视了其背后的“真相”。<br/>
+                                    2、晨起眼睑或颜面水肿，午后多消退，水肿也可出现在身体低垂部位，如双脚踝内侧、双下肢甚至腰骶部等，水肿往往会在劳累后加重，休息后减轻。<br/>
+                                    <a style="cursor: pointer;" onclick="showDetail('1')">查看详细</a>
+                                </p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-articals">
+                    <div class="artical">
+                        <div class="artical-box">
+                            <div class="artical-img">
+                                <a href="#"><img src="images/idx_list_02.jpg" /></a>
+                            </div>
+                            <div class="artical-info">
+                                <div class="artical-heading">
+                                    <span>肾脏病分期，看看您属于哪一期</span>
+                                    <div class="clear"></div>
+                                </div>
+                                <p>
+                                    什么是CKD几期啊？许多肾病患者，都知道血肌酐高了不好，但似乎并不知道，以血肌酐值为判断标准，肾病是如何分期的，今天我们来分析一下！<br/>
+                                    1、CKD1期：炎症反应期<br/>
+                                    2、CKD2期：肾功能代偿期<br/>
+                                    3、CKD3期：肾功能失代偿期<br/>
+                                    4、CKD4期：肾衰竭期<br/>
+                                    <a style="cursor: pointer;" onclick="showDetail('2')">查看详细</a>
+                                </p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-articals">
+                    <div class="artical">
+                        <div class="artical-box">
+                            <div class="artical-img">
+                                <a href="#"><img src="images/idx_list_03.jpg" /></a>
+                            </div>
+                            <div class="artical-info">
+                                <div class="artical-heading">
+                                    <span>肾炎吃什么食物好</span>
+                                    <div class="clear"></div>
+                                </div>
+                                <p>
+                                    肾炎吃什么食物好？高盐、高脂、高蛋白质、高钾食物是肾炎患者饮食要避开的，那么肾炎吃什么食物好呢？清淡而有利尿作用的食物是最佳选择。下面小编为您介绍肾炎的食疗方。<br/>
+                                    慢性肾炎患者在浮肿、尿少或饮食不佳时，应吃清淡而容易消化的低盐或无盐饮食。随着病情的好转，尿量增加、浮肿消退后，为了及时补充尿中大量丢失的蛋白质，可以逐渐过渡为优质高蛋白饮食。如伴有贫血，可选用含铁丰富的食物，如动物血、动物肝脏、瘦肉、黑豆、黑木耳、芝麻酱等。<br/>
+                                    <a style="cursor: pointer;" onclick="showDetail('3')">查看详细</a>
+                                </p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---End-Content---->
+        <!---start-sidebar---->
+        <div class="side-bar">
+            <div class="artical-heading" style="margin-top: 10px;">
+                <h3>阅读排行榜</h3>
+                <div class="clear"></div>
+            </div>
+            <div class="sponsers-list" style="width:100%; margin-top: 5px;border: 1px solid #60B001;border-radius: 0.1em;">
+                <ol>
+                    <li>
+                        <span>肾病自查--早期常见症状</span><br>
+                        <span style="margin-left:20px;">阅读量：206</span>
+                    </li>
+                    <li>
+                        <span>肾病三期并不可怕</span><br>
+                        <span style="margin-left:20px;">阅读量：157</span>
+                    </li>
+                    <li>
+                        <span>肾病常用食物推荐</span><br>
+                        <span style="margin-left:20px;">阅读量：146</span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <!---End-sidebar---->
+    </div>
+    <!---End-main---->
+
+    <!---start-footer---->
+    <footer>
+        <div class="footer">
+            <div class="btn_mes">
+            <span>
+                <a href="http://www.miitbeian.gov.cn" target="_blank">粤ICP备18109807号</a>
+            </span>
+            </div>
+        </div>
+    </footer>
+    <!---End-footer---->
+
+</div>
+<!---End-wrap--->
+</body>
+</html>
+

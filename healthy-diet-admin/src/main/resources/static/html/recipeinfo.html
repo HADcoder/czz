@@ -1,0 +1,256 @@
+<style>
+    .layui-form-label {
+        width: 70px !important;
+        padding: 9px 5px !important;
+    }
+</style>
+<div class="layui-fluid" style="margin-top: 20px">
+    <!--<div class="layui-card layadmin-header" style="height:30px">
+        <div style="visibility: visible;">
+            <a>主页</a>
+            <a ng-repeat="item in navTitles">
+                <span style="margin: 0 5px;">/</span>
+                <cite>{{item}}</cite>
+            </a>
+        </div>
+    </div>-->
+
+    <div class="layui-card">
+        <div class="layui-form" style="height: 30px">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" ng-model="q.name" name="name" placeholder="请输入" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">食材</label>
+                    <div class="layui-input-inline">
+                        <input type="hidden" name="q_foodId" ng-model="q.foodId">
+                        <input type="text" id="q_foodId" ng-blur="clearFoodId()" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-normal" ng-click="query()">
+                        <i class="layui-icon layui-icon-search"></i>查询
+                    </button>
+                    <button class="layui-btn layui-btn-normal" ng-click="add()">
+                        <i class="layui-icon layui-icon-add-1"></i>添加
+                    </button>
+                    <button class="layui-btn layui-btn-danger" ng-click="delete()">
+                        <i class="layui-icon layui-icon-delete"></i>删除
+                    </button>
+                    <button class="layui-btn layui-btn-normal uploadCls">
+                        <i class="layui-icon layui-icon-upload-drag"></i>Excel导入
+                    </button>
+                    <a style="cursor:pointer;color:#01AAED;margin-left: 10px;"
+                       href="api/downloadFile/recipe.xlsx" target="_blank">模版下载</a>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <table class="layui-table" id="table" lay-filter="table"></table>
+            <div id="pageNav"></div>
+        </div>
+    </div>
+</div>
+
+<div id="editForm" style="display: none;">
+    <div class="layui-fluid" style="margin-top: 20px">
+        <form class="layui-form" lay-filter="editForm"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+            <input type="hidden" name="id">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="name" lay-verify="required" placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">烹饪方法</label>
+                    <div class="layui-input-inline">
+                        <select name="method" lay-filter="method" lay-verify="required">
+                            <option value="1">炒</option>
+                            <option value="2">煮</option>
+                            <option value="3">蒸</option>
+                            <option value="4">炖</option>
+                            <option value="5">发酵</option>
+                            <option value="6">其它</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">风味</label>
+                    <div class="layui-input-inline">
+                        <select name="taste" lay-filter="taste" lay-verify="required">
+                            <option value="1">原味</option>
+                            <option value="2">清淡</option>
+                            <option value="3">咸鲜</option>
+                            <option value="4">油炸</option>
+                            <option value="5">其它</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">菜系</label>
+                    <div class="layui-input-inline">
+                        <select name="cuisine" lay-filter="cuisine" lay-verify="required">
+                            <option value="1">粤菜</option>
+                            <option value="2">川菜</option>
+                            <option value="3">湘菜</option>
+                            <option value="4">鲁菜</option>
+                            <option value="0">其它</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">难度</label>
+                    <div class="layui-input-inline">
+                        <select name="difficulty" lay-filter="difficulty" lay-verify="required">
+                            <option value="1">简单</option>
+                            <option value="2">容易</option>
+                            <option value="3">一般</option>
+                            <option value="4">中等</option>
+                            <option value="5">困难</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">年龄段</label>
+                    <div class="layui-input-inline">
+                        <select name="ageGroup" lay-filter="ageGroup" lay-verify="required">
+                            <option value="1">少儿</option>
+                            <option value="2">成人</option>
+                            <option value="3">老年</option>
+                            <option value="0">不限</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">餐时</label>
+                <div class="layui-input-block">
+                    <input type="hidden" name="mealTime">
+                    <input type="checkbox" lay-filter="mealTime" name="mealTimes" value="0" title="早餐">
+                    <input type="checkbox" lay-filter="mealTime" name="mealTimes" value="1" title="午餐">
+                    <input type="checkbox" lay-filter="mealTime" name="mealTimes" value="2" title="晚餐">
+                    <input type="checkbox" lay-filter="mealTime" name="mealTimes" value="3" title="加班">
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="margin-right:60px;">
+
+                <label class="layui-form-label">准备时长</label>
+                <div class="layui-input-block">
+                    <input type="hidden" name="prepareTime">
+                    <div id="prepareTime" style="top: 15px"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="margin-right:60px;">
+                <label class="layui-form-label">烹饪时长</label>
+                <div class="layui-input-block">
+                    <input type="hidden" name="cookingTime">
+                    <div id="cookingTime" style="top: 15px"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">荤素类别</label>
+                    <div class="layui-input-inline">
+                        <input type="radio" name="category" lay-verify="required" value="0" title="素食">
+                        <input type="radio" name="category" lay-verify="required" value="1" title="荤菜" checked>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">主料</label>
+                <div class="layui-input-block" style="margin-left:80px;margin-right:60px;">
+
+                    <div class="layui-textarea">
+                        <input type="hidden" name="mainIngredient">
+                        <div class="tags-item" ng-repeat="item in mainIngredients track by item.id">
+                            <span>{{item.foodAlias+'：'+item.weight}}</span>
+                            <i class="layui-icon layui-icon-close" ng-click="delMainIngredient(item.id)"></i>
+                        </div>
+                        <textarea placeholder="请输入" id="mainIngredient" class="tags-input layui-textarea"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">辅料</label>
+                <div class="layui-input-block" style="margin-left:80px;margin-right:60px;">
+                    <div class="layui-textarea">
+                        <input type="hidden" name="suppleMentary">
+                        <div class="tags-item" ng-repeat="item in suppleMentarys track by item.id">
+                            <span>{{item.foodAlias+'：'+item.weight}}</span>
+                            <i class="layui-icon layui-icon-close" ng-click="delSuppleMentary(item.id)"></i>
+                        </div>
+                        <textarea placeholder="请输入" id="suppleMentary" class="tags-input layui-textarea"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">食物图片</label>
+                <div class="layui-input-block" style="margin-left:80px;margin-right:60px;">
+                    <input type="text" name="picture" lay-verify="required" placeholder="请输入"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">烹饪步骤</label>
+                <div class="layui-input-block" style="margin-left:80px;margin-right:60px;">
+                    <textarea placeholder="请输入内容" name="cookingNote" lay-verify="required" class="layui-textarea"></textarea>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <div class="layui-input-block" style="text-align: center;margin-left:0px;margin-right:60px;">
+                    <!--<button class="layui-btn" lay-submit lay-filter="*">立即提交</button>-->
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="*">立即提交</button>
+                    <button class="layui-btn layui-btn-primary layui-layer-close">关闭</button>
+                </div>
+            </div>
+            <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+        </form>
+    </div>
+</div>
+
+<div id="mainModal" style="display: none;">
+    <div class="layui-fluid" style="margin-top: 20px">
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>食材名称</th>
+                <th>重量</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in mainIngredients track by item.id">
+                <td>{{$index + 1}}</td>
+                <td>{{item.foodAlias}}</td>
+                <td>{{item.weight}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

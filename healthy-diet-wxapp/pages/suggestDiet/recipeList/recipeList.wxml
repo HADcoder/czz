@@ -1,0 +1,12 @@
+<view class="content" wx:for="{{recipeListView}}" wx:for-item="item" wx:key="foodId">
+	<navigator url="../recipeDetail/recipeDetail?recipeCode={{item.recipeId}}" hover-class="navigator-hover" class="row-container">
+		<view class="con-tr">
+			<image mode='aspectFill' class="con-trimg" src='https://www.kidneyhealty.com.cn/images/recipe/{{item.recipeId}}.jpg' wx:if="{{item.recipeId}}"></image>
+			<image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png' wx:else></image>
+		</view>
+		<view class="con-info">
+			<view class="coin-name">{{item.recipeName}}</view>
+			<view class="coin-info">{{item.shortIntroduction}}</view>
+		</view>
+	</navigator>
+</view>

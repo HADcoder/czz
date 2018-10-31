@@ -1,0 +1,40 @@
+page{
+  background-color: #ffffff;
+}
+
+.data-checkbox-view {
+    width:100%;
+    text-align: center;
+    vertical-align: middle;
+    padding-top:30rpx;
+    padding-bottom: 40rpx;
+}
+.checkbox-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:center;
+  align-items: center;
+  margin: 0 30rpx;
+  line-height: 2.5rem;
+}
+.checkbox-group label {
+  margin: 20rpx;
+  padding: 20rpx 40rpx;
+  border-radius: 30rpx;
+  text-align: left;
+  height: 60rpx;
+  width: 45%;
+}
+.checkbox-group .is_checked {
+  background-color: #4cb16f;
+  color: white;
+}
+
+
+
+
+
+
+
+

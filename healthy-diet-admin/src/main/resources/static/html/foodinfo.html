@@ -1,0 +1,503 @@
+<style>
+    .layui-form-label {
+        width: 70px !important;
+        padding: 9px 5px !important;
+    }
+</style>
+<div class="layui-fluid" style="margin-top: 20px">
+    <!--<div class="layui-card layadmin-header" style="height:30px">
+        <div style="visibility: visible;">
+            <a>主页</a>
+            <a ng-repeat="item in navTitles">
+                <span style="margin: 0 5px;">/</span>
+                <cite>{{item}}</cite>
+            </a>
+        </div>
+    </div>-->
+
+    <div class="layui-card">
+        <div class="layui-form" style="height: 30px">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">食材名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" ng-model="q.foodName" name="foodName" placeholder="请输入" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                    <div class="layui-input-inline">
+                        <select name="q_type" lay-filter="q_type" lay-verify="required">
+                            <option value="">食材分类</option>
+                            <option ng-repeat="item in foodTypes track by $index" _subVal="{{item.subTypes}}" value="{{item.type}}">{{item.typeName}}</option>
+                        </select>
+                    </div>
+
+                    <div class="layui-input-inline">
+                        <select name="q_subType" lay-filter="q_subType" lay-verify="required">
+                            <option value="">食材亚类</option>
+                            <option ng-repeat="item in foodSubTypes track by $index" value="{{item.subType}}">{{item.subTypeName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-normal" ng-click="query()">
+                        <i class="layui-icon layui-icon-search"></i>查询
+                    </button>
+                    <button class="layui-btn layui-btn-normal" ng-click="add()">
+                        <i class="layui-icon layui-icon-add-1"></i>添加
+                    </button>
+                    <button class="layui-btn layui-btn-normal uploadCls">
+                        <i class="layui-icon layui-icon-upload-drag"></i>Excel导入
+                    </button>
+                    <a style="cursor:pointer;color:#01AAED;margin-left: 10px;"
+                       href="api/downloadFile/food.xlsx" target="_blank">模版下载</a>
+                    <!--<button class="layui-btn layui-btn-danger">
+                        <i class="layui-icon layui-icon-delete"></i>删除
+                    </button>-->
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <table class="layui-table" id="table" lay-filter="table"></table>
+            <div id="pageNav"></div>
+        </div>
+    </div>
+</div>
+
+<div id="editForm" style="display: none;">
+    <div class="layui-fluid" style="margin-top: 20px">
+        <form class="layui-form" lay-filter="editForm"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+            <input type="hidden" name="id">
+            <fieldset class="layui-elem-field">
+                <legend>基础信息</legend>
+                <div class="layui-field-box">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">食材名称</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="foodName" lay-verify="required" placeholder="请输入"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">食材别名</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="foodAlias" lay-verify="required" placeholder="请输入"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">食材分类</label>
+                        <div class="layui-input-inline">
+                            <select name="type" lay-filter="type" lay-verify="required">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in foodTypes track by $index" _subVal="{{item.subTypes}}" value="{{item.type}}">{{item.typeName}}</option>
+                            </select>
+                        </div>
+
+                        <label class="layui-form-label">食材亚类</label>
+                        <div class="layui-input-inline">
+                            <select name="subType" lay-filter="subType" lay-verify="required">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in foodSubTypes track by $index" value="{{item.subType}}">{{item.subTypeName}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">食部</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="edible" lay-verify="required" placeholder="请输入"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+
+                        <input type="hidden" name="foodCode">
+                        <!--<label class="layui-form-label">编码</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="foodCode" lay-verify="required" placeholder="请输入"
+                                   autocomplete="off" class="layui-input">
+                        </div>-->
+
+                        <label class="layui-form-label">份量单位</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="intake" lay-verify="required" placeholder="请输入"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">CKD分类</label>
+                        <div class="layui-input-inline">
+                            <!--<input type="text" name="ckd" lay-verify="required" placeholder="请输入"
+                                   autocomplete="off" class="layui-input">-->
+                            <select name="ckd" lay-filter="ckd" lay-verify="required">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in foodCkds track by $index" value="{{item}}">{{item}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="layui-elem-field">
+                <legend>能量组成</legend>
+                <div class="layui-field-box">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">水分</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="water" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">能量</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="energyKcal" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <label class="layui-form-label">蛋白质</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="protein" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <label class="layui-form-label">蛋白质赋值</label>
+                        <div class="layui-input-inline">
+                            <!--<input type="text" name="proteinCls" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">-->
+                            <select name="proteinCls" lay-filter="proteinCls" lay-verify="required">
+                                <option value="">请选择</option>
+                                <option value="1">推荐</option>
+                                <option value="2">食用</option>
+                                <option value="3">不食用</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">脂肪</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="fat" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <label class="layui-form-label">脂肪赋值</label>
+                        <div class="layui-input-inline">
+                            <!--<input type="text" name="fatCls" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">-->
+                            <select name="fatCls" lay-filter="fatCls" lay-verify="required">
+                                <option value="">请选择</option>
+                                <option value="1">推荐</option>
+                                <option value="2">食用</option>
+                                <option value="3">不食用</option>
+                            </select>
+                        </div>
+
+                        <label class="layui-form-label">碳水化合物</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="cho" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <label class="layui-form-label">碳水化合物赋值</label>
+                        <div class="layui-input-inline">
+                            <!--<input type="text" name="choCls" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">-->
+                            <select name="choCls" lay-filter="choCls" lay-verify="required">
+                                <option value="">请选择</option>
+                                <option value="1">推荐</option>
+                                <option value="2">食用</option>
+                                <option value="3">不食用</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">胆固醇</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="cholesterol" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <label class="layui-form-label">胆固醇赋值</label>
+                        <div class="layui-input-inline">
+                            <!--<input type="text" name="cholesterolCls" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">-->
+                            <select name="cholesterolCls" lay-filter="cholesterolCls" lay-verify="required">
+                                <option value="">请选择</option>
+                                <option value="1">推荐</option>
+                                <option value="2">食用</option>
+                                <option value="3">不食用</option>
+                            </select>
+                        </div>
+
+                        <label class="layui-form-label">嘌呤</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="purine" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <label class="layui-form-label">嘌呤赋值</label>
+                        <div class="layui-input-inline">
+                            <!--<input type="text" name="purineCls" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">-->
+                            <select name="purineCls" lay-filter="purineCls" lay-verify="required">
+                                <option value="">请选择</option>
+                                <option value="1">推荐</option>
+                                <option value="2">食用</option>
+                                <option value="3">不食用</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">血糖指数</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="gi" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <label class="layui-form-label">总纤维</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="fiber" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">可溶性纤维</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="soluble" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <label class="layui-form-label">不溶性纤维</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="dietaryFiber" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">灰分</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="ash" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <label class="layui-form-label">视黄醇</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="retinol" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">硫胺素</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="thiamin" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <label class="layui-form-label">核黄素</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="riboflavin" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">尼克酸</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="nicotinic" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <label class="layui-form-label">叶酸</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="folate" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">烟酸</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="niacin" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="layui-elem-field">
+                <legend>微量元素</legend>
+                <div class="layui-field-box">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">胡萝卜素</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="carotene" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">维生素A</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="vitA" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">维生素C</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="vitC" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">维生素E</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="vitE" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">维生素B6</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="vitB6" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">维生素B12</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="vitB12" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="layui-elem-field">
+                <legend>矿物质</legend>
+                <div class="layui-field-box">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">钙</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="aceEleCa" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">磷</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="aceEleP" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">磷赋值</label>
+                        <div class="layui-input-inline ">
+                            <!--<input type="text" name="aceElePCls" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">-->
+                            <select name="aceElePCls" lay-filter="aceElePCls" lay-verify="required">
+                                <option value="">请选择</option>
+                                <option value="1">推荐</option>
+                                <option value="2">食用</option>
+                                <option value="3">不食用</option>
+                            </select>
+                        </div>
+
+                        <label class="layui-form-label">蛋白质/麟</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="proteinDivP" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">钾</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="aceEleK" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">钾赋值</label>
+                        <div class="layui-input-inline ">
+                            <!--<input type="text" name="aceEleKCls" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">-->
+                            <select name="aceEleKCls" lay-filter="aceEleKCls" lay-verify="required">
+                                <option value="">请选择</option>
+                                <option value="1">推荐</option>
+                                <option value="2">食用</option>
+                                <option value="3">不食用</option>
+                            </select>
+                        </div>
+
+                        <label class="layui-form-label">钠</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="aceEleNa" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">钠赋值</label>
+                        <div class="layui-input-inline ">
+                            <!--<input type="text" name="aceEleNaCls" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">-->
+                            <select name="aceEleNaCls" lay-filter="aceEleNaCls" lay-verify="required">
+                                <option value="">请选择</option>
+                                <option value="1">推荐</option>
+                                <option value="2">食用</option>
+                                <option value="3">不食用</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">镁</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="aceEleMg" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">铁</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="aceEleFe" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">锌</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="aceEleZn" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">硒</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="aceEleSe" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">铜</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="aceEleCu" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">锰</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="aceEleMn" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">碘</label>
+                        <div class="layui-input-inline ">
+                            <input type="text" name="aceEleI" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="layui-elem-field">
+                <legend>其它</legend>
+                <div class="layui-field-box">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">版本</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="version" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">备注</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="remark" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block" style="text-align: center;margin-left:0px;margin-right:60px;">
+                    <!--<button class="layui-btn" lay-submit lay-filter="*">立即提交</button>-->
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="*">立即提交</button>
+                    <button class="layui-btn layui-btn-primary layui-layer-close">关闭</button>
+                </div>
+            </div>
+            <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+        </form>
+    </div>
+</div>

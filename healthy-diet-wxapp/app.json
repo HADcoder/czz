@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/index/guide/guide",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/question/gender/gender",
+    "pages/question/birth/birth",
+    "pages/question/height/height",
+    "pages/question/weight/weight",
+    "pages/question/sportRate/sportRate",
+    "pages/question/treatmentMethod/treatmentMethod",
+    "pages/question/otherDisease/otherDisease",
+    "pages/question/nephroticPeriod/nephroticPeriod",
+    "pages/question/irritability/irritability",
+    "pages/summary/summary",
+    "pages/logFood1/logFood",
+    "pages/logFoodDetail1/logFoodDetail",
+    "pages/suggestDiet/suggestDiet",
+    "pages/index/about/about",
+    "pages/index/authentication/authentication",
+    "pages/index/bodyInfoUpdate/index",
+    "pages/suggestDiet/meal/meal",
+    "pages/suggestDiet/dailyTips/dailyTips",
+    "pages/suggestDiet/foodType/foodType",
+    "pages/suggestDiet/foodList/foodList",
+    "pages/suggestDiet/foodDetail/foodDetail",
+    "pages/suggestDiet/recipeList/recipeList",
+    "pages/suggestDiet/recipeDetail/recipeDetail",
+    "pages/threeDayDietReport/threeDayDietReport"
+  ],
+  "window": {
+    "backgroundTextStyle": "bold",
+    "navigationBarBackgroundColor": "#4cb16f",
+    "navigationBarTitleText": "肾脏营养师  ",
+    "navigationBarTextStyle": "white",
+    "navigationBarLoading": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/logFood1/logFood",
+        "text": "饮食记录",
+        "selectedIconPath": "images/calendar-logo.png",
+        "iconPath": "images/calendar-logo-uncheck.png"
+      },
+      {
+        "pagePath": "pages/suggestDiet/suggestDiet",
+        "text": "膳食建议",
+        "selectedIconPath": "images/front.png",
+        "iconPath": "images/front1.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "selectedIconPath": "images/mine.png",
+        "iconPath": "images/mine1.png"
+      }
+    ],
+    "color": "#929292",
+    "selectedColor": "#20492e"
+  }
+}

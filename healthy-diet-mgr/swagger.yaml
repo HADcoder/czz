@@ -1,0 +1,135 @@
+swagger: '2.0'
+info:
+  description: API for Health-Diet application
+  version: "1.0.0"
+  title: Health-Diet API
+  # put the contact info for your development or API team
+  contact:
+    email: sara@beets3d.cn
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: Food
+  description: Secured calls for food related
+
+paths:
+  /food/detail/{foodId}:
+    get:
+      tags:
+      - Food
+      summary: Get food detail by ID
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: foodId
+        description: ID for specify food(eg. "01-1-101")
+        required: true
+        type: string
+      - in: query
+        name: openId
+        description: openId of user(eg. "owygB5R_uHJQaut02wAkUkcaDrmU")
+        required: true
+        type: string
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FoodDetailResponse'
+        400:
+          description: bad input parameter
+
+    post:
+      tags:
+      - Food
+      summary: Update the food with favor preference info
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: foodId
+        description: ID for specify food
+        required: true
+        type: string
+      - in: body
+        name: foodEatFrequency
+        description: Entity use for store food favor preference
+        schema:
+          $ref: '#/definitions/FoodEatFrequency'
+      responses:
+        200:
+          description: "操作成功"
+        403:
+          description: "权限异常，请联系我们"
+        404:
+          description: "请求不存在"
+        500:
+          description: "访问异常，请联系我们"
+
+definitions:
+  FoodDetailResponse:
+    type: object
+    required:
+    - name
+    - composition
+    - dieticianAdvice
+    properties:
+      name:
+        type: string
+        example: "小麦(粒)"
+      label:
+        type: array
+        items:
+          type: string
+          example: "低脂肪"
+      frequency:
+        type: string
+        enum:
+          - "不吃"
+          - "偶然吃"
+          - "经常吃"
+      composition:
+        type: object
+        additionalProperties:
+          type: string
+          example: "1.3克"
+      dieticianAdvice:
+        type: string
+        example: "您的肾脏功能属于第一期，血压偏高，该食物蛋白质和纳含量适中，可适量食用。"
+
+
+  FoodEatFrequency:
+    type: object
+    required:
+    - openId
+    - foodId
+    - frequency
+    properties:
+      openId:
+        type: string
+        example: "owygB5R_uHJQaut02wAkUkcaDrmU"
+      foodId:
+        type: string
+        example: "01-1-101"
+      frequency:
+        type: string
+        enum:
+          - "不吃"
+          - "偶然吃"
+          - "经常吃"
+
+
+# Added by API Auto Mocking Plugin
+# host: kidneyhealty.com.cn
+# basePath: /
+schemes:
+ - https
+# Added by API Auto Mocking Plugin
+host: kidneyhealty.com.cn
+basePath: /

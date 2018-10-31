@@ -1,0 +1,96 @@
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  #    address: ${server.addr:127.0.0.1}
+  port: 8080
+  servlet:
+    context-path: /
+  error:
+    path: /error
+
+# mysql
+spring:
+  profiles:
+    active: dev
+  #    session:
+  #        store-type: redis
+  #    gson:
+  #        date-format: yyyy-MM-dd HH:mm:ss
+  #        serialize-nulls: false
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: non_null
+  http:
+    encoding:
+      enabled: true
+      charset: utf-8
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
+    servlet:
+      content-type: text/html
+  datasource:
+    druid:
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+          enabled: true
+        wall:
+          config:
+            multi-statement-allow: true
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: diet@web
+        login-password: health123456!@#$%
+        allow: 127.0.0.1
+  #    redis:
+  #         timeout: 6000s
+  #         jedis:
+  #             pool:
+  #                 max-active: 1000
+  #                 max-idle: 10
+  #                 min-idle: 5
+  #                 max-wait: -1ms
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .html
+  aop:
+    auto: true
+    proxy-target-class: true
+# Mybatis
+mybatis:
+  mapper-locations: ["classpath:mapper/*Mapper.xml", "classpath:mapper/**/*Mapper.xml"]
+  config-location: classpath:mapper/config/sqlMapConfig.xml
+#  configuration:
+#    map-underscore-to-camel-case: true
+#  type-aliases-package: com.blackchicktech.healthdiet.repository
+#app:
+#  appId: "wxd7b407ad92867db4"
+#  appSecret: "10ad93acba22a59ddec2a45e7d75786b"
+

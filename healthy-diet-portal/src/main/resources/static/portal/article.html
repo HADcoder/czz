@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>肾病健康营养师</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+
+    <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="js/jquery.slides.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#slides').slidesjs({
+                width: 1210,
+                height: 315,
+                navigation: false,
+                pagination: {
+                    active: false,
+                },
+                play: {
+                    active: false,
+                    effect: "fade",
+                    interval: 5000,
+                    auto: false
+                }
+            });
+        })
+        function showDetail(idx) {
+            sessionStorage.setItem("articleId", idx);
+            window.location.href = "articledetail.html"
+        }
+    </script>
+</head>
+<body>
+<!---start-wrap--->
+<div class="wrap">
+    <!---start-header--->
+    <div class="header">
+        <!---start-logo--->
+        <div class="logo" style="width: 100%;">
+            <div style="float: left;">
+                <a href="index.html">
+                    <img src="images/logo.png" title="logo" style="width:80px;"/>
+                </a>
+            </div>
+            <div style="height: 85px;position: relative;float: left;">
+                <div style="font-size: 43px;color: #60B001;font-weight: bold;position: absolute;width: 500px;bottom: 0;">肾病健康营养师</div>
+            </div>
+        </div>
+        <!---End-logo--->
+        <div class="clear"></div>
+        <!---End-head-social-icons--->
+        <!---start-top-nav---->
+        <div class="top-nav">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="article.html">肾病常识</a></li>
+                <li><a href="recipe.html">健康食谱</a></li>
+                <li><a href="about.html">关于我</a></li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <!---End-top-nav---->
+    </div>
+    <!---End-header--->
+    <!---start-main---->
+    <div class="main">
+        <!---start-Content---->
+        <div class="main-content" style="position: relative;">
+            <div class="image-slider">
+                <div class="container">
+                    <div id="slides">
+                        <img src="images/idx_title_01.jpg" alt="">
+                        <img src="images/idx_title_02.png" alt="">
+                        <!--<img src="images/slider3.jpg" alt="">-->
+                        <!--<img src="images/slider4.jpg" alt="">-->
+                        <a href="#" class="slidesjs-next slidesjs-navigation">
+                            <i class="icon-chevron-right icon-large"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div style="position: absolute;top: 35px; right: 20%;z-index: 999;">
+                <div style="text-align: right;line-height: 40px;color: #332A21;">
+                    <p style="font-family: LiSu;font-size: 35px;color: #ff9f00">让食物成为你的药物，而不是让药物成为你的食物</p>
+                    <p style="font-family: KaiTi;font-size: 25px;color: #1E9FFF;">——希波克拉底</p>
+                    <p style="font-family: KaiTi;font-size: 25px;color: #1E9FFF;">现代医学之父</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center;width: 100%;">
+            <div>
+                <div style="width: 50%; float:left;margin: 20px 0;">
+                    <div style="line-height:30px; color: #60B001; font-family: 'Roboto', sans-serif; font-size: 16px;">肾病科普</div>
+                    <div>
+                        <a style="cursor: pointer;" onclick="showDetail('1')"><img src="images/art-img1.jpg" /></a>
+                    </div>
+                </div>
+                <div style="width: 50%; float:left;margin: 20px 0;">
+                    <div style="line-height:30px; color: #60B001; font-family: 'Roboto', sans-serif; font-size: 16px;">肾病用药</div>
+                    <div>
+                        <a style="cursor: pointer;" onclick="showDetail('3')"><img src="images/art-img2.jpg" /></a>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div style="width: 50%; float:left;margin: 20px 0;">
+                    <div style="line-height:30px; color: #60B001; font-family: 'Roboto', sans-serif; font-size: 16px;">肾病治疗</div>
+                    <div>
+                        <a style="cursor: pointer;" onclick="showDetail('2')"><img src="images/art-img3.jpg" /></a>
+                    </div>
+                </div>
+                <div style="width: 50%; float:left;margin: 20px 0;">
+                    <div style="line-height:30px; color: #60B001; font-family: 'Roboto', sans-serif; font-size: 16px;">肾病并发症</div>
+                    <div>
+                        <a style="cursor: pointer;" onclick="showDetail('2')"><img src="images/art-img1.jpg" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!---End-Content---->
+        <div class="clear"></div>
+    </div>
+    <!---End-main---->
+
+    <!---start-footer---->
+    <footer>
+        <div class="footer">
+            <div class="btn_mes">
+            <span>
+                <a href="http://www.miitbeian.gov.cn" target="_blank">粤ICP备18109807号</a>
+            </span>
+            </div>
+        </div>
+    </footer>
+    <!---End-footer---->
+
+</div>
+
+
+<!---End-wrap--->
+
+</body>
+</html>
+

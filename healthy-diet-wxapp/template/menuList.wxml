@@ -1,0 +1,15 @@
+   <template name="menuWithIconAndRightImage">
+   <view class="menu-list dark-green">
+      <block wx:for='{{menuList}}' wx:key='{{item}}'>
+        <navigator url="{{item.directUrl}}">
+            <view class="menu-item">
+            <image class="title-icon" src="{{item.iconUrl}}" />
+                <view class="menu-item-title">
+                    {{item.menuName}}
+                </view>
+                <image class="next-icon" src="{{item.rightImageUrl}}" />
+            </view>
+        </navigator>
+      </block>
+    </view>
+    </template>

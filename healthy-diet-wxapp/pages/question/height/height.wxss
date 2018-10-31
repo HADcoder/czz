@@ -1,0 +1,4 @@
+/* pages/question/height/height.wxss */
+page{
+  background-color: #ffffff;
+}

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "",
+  "backgroundColor": "#F5F5F5",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "date-picker": "../../vendor/date-picker/date-picker"
+  }
+}

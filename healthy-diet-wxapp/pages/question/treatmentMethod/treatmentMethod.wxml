@@ -1,0 +1,29 @@
+<!--pages/question/treatmentMethod/treatmentMethod.wxml-->
+<view class="question-container dark-green">
+	<view class="big-logo-view">
+		<image class="big-logo" mode="widthFix" src="{{logoUrl}}" ></image>
+	</view>
+	<view class="question-header-view">
+		<text class="question-header">{{question}}</text>
+	</view>
+
+	<view class="data-checkbox-view">
+		<checkbox-group bindchange="checkboxChange">
+    <view wx:for="{{parameter}}" wx:key="parameter" wx:for-index="idx" class="checkbox-group">
+			<label class="checkbox {{item.checked?'is_checked':''}}">
+				<checkbox value="{{item.key}}" checked="{{item.checked}}"/>{{item.name}}
+			</label>
+      </view>
+		</checkbox-group>
+	</view>
+  
+
+	<view class="nextButtonView">
+    <button wx:if="{{!postUpdate}}" 
+      bindtap='goToNextQuestion' 
+      class='nextQuestionButton'>{{nextQuestionBtnText}}</button>
+    <button wx:else 
+      bindtap='updateValue' 
+      class='nextQuestionButton'>{{updateValueBtnText}}</button>
+  </view>
+</view>

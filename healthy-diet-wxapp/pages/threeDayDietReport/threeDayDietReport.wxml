@@ -1,0 +1,78 @@
+<import src="../../template/pageHeader.wxml"/>
+<view class="main-container">
+  <template is="pageHeader" data="{{...title}}"/>
+  <view class='calendar_block'>
+  <calendar
+          weeks-type="cn"
+          cell-size="43"
+          bindprevMonth="switchMonth"
+          bindnextMonth="switchMonth"
+          binddateChange="switchMonth"
+          binddayClick="switchDay"
+          next="{{true}}" prev="{{true}}" show-more-days="{{false}}"
+          lunar="{{true}}"
+          calendar-style="calendar"
+          header-style="calendar-header"
+          board-style="calendar-board"
+          days-color="{{selectedDaysStyle}}"
+  />
+  </view>
+  <view wx:if="{{hasResult}}">
+
+    <view wx:if='{{elementEvgs}}'>
+      <view class="header">三日综合营养摄入均值</view>
+      <block wx:for="{{nutritionRatio}}" wx:for-item="item" wx:key="name">
+			  <view class='gridTab'>
+				  <view class='tab-box'>
+					  <text class='mini-tab-header'>{{item.name}}</text>
+					  <text class='mini-tab-info'>{{item.value}}</text>
+				  </view>
+			  </view>
+		  </block>
+    </view>
+
+    <view wx:if='{{dieticianAdvice}}' >
+      <view class="header">营养师评价</view>
+      <block class="basicInfoSummary">
+        <view class="basicInfoSummary bold">根据您目前的身体状况，</view>
+        <view wx:for='{{basicInfoSummary}}' wx:key="item" wx:for-item="item" class="basicInfo">
+          <view>- {{item.name}}({{item.value}})</view>
+        </view>
+        <view class="basicInfoSummary bold">下面是各项营养指标的具体评估结果：</view>
+      </block>
+      <block wx:for="{{dieticianAdvice}}" wx:for-item="item" wx:key="item" class="dieticianAdvice">
+        <view class="advise">
+          <view class="adviseIndex">{{index+1}}</view> 
+          <view class="adviseContent">{{item}}</view>
+        </view>
+      </block>
+    </view>
+
+    <view wx:if='{{dieticianAdvice}}' class="reminder">
+      <text>PS. 以上建议是基于您在「饮食记录」里记录的食物分量得出的结果。希望您能准确记录您的食物摄入量，以便获得更准确的数值哦！</text>
+    </view>
+
+    <view class="header">膳食记录小知识</view>
+    <view class="dark-green knowledge-block">
+      <view class="kheader">什么是标准三日膳食记录法?</view>
+      <view class="kbody">记录膳食连续三日，包括两个工作日和一个休息日，计算三日膳食营养物质平均值。</view> 
+    </view>
+
+    <view wx:if='{{standardLog}}' class="dark-green logTypeInfo">
+      您使用的正是标准三日膳食记录，赞赞赞！继续加油哦！
+    </view>
+    <view wx:else class="dark-green logTypeInfo">
+    您使用的是折衷三日膳食记录，只要继续坚持记录也能获得比较精确的营养师评价哦！
+    </view>
+  </view>
+  <view wx:else>
+    <view class="header">膳食记录小知识</view>
+      <view class="dark-green knowledge-block">
+      <view class="kheader">什么是标准三日膳食记录法?</view>
+      <view class="kbody">记录膳食连续三日，包括两个工作日和一个休息日，计算三日膳食营养物质平均值。</view> 
+    </view>
+    <view class="dark-green logTypeInfo">
+      按照标准三日膳食记录法继续坚持记录吧，符合标准的记录将会在日历标注圈圈，点击可以获得进一步精确膳食提示哦！
+    </view>
+  </view>
+</view>

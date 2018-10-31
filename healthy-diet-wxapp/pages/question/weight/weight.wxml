@@ -1,0 +1,31 @@
+<!--pages/question/weight/weight.wxml-->
+<view class="question-container dark-green">
+	<view class="big-logo-view">
+		<image class="big-logo" mode="widthFix" src="{{logoUrl}}" ></image>
+	</view>
+	<view class="question-header-view">
+		<text class="question-header">{{question}}</text>
+	</view>
+
+	<view class="data-picker-view">
+		<picker-view indicator-style="height: 40rpx;" value="{{value}}" bindchange="bindChange">
+			<picker-view-column>
+				<view wx:for="{{weightsInteger}}" wx:key="weightsInteger">{{item}}</view>
+			</picker-view-column>
+			<text style="margin-top: 120rpx;">.</text>
+			<picker-view-column>
+				<view wx:for="{{weightsFraction}}" wx:key="weightsFraction">{{item}}</view>
+			</picker-view-column>
+			<text style="margin-top: 120rpx;">kg</text>
+		</picker-view>
+	</view>
+
+	<view class="nextButtonView">
+    <button wx:if="{{!postUpdate}}" 
+      bindtap='goToNextQuestion' 
+      class='nextQuestionButton'>{{nextQuestionBtnText}}</button>
+    <button wx:else 
+      bindtap='updateValue' 
+      class='nextQuestionButton'>{{updateValueBtnText}}</button>
+  </view>
+</view>

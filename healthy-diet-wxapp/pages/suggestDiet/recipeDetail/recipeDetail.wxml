@@ -1,0 +1,71 @@
+<view class="page">
+	<view class="info_block">
+		<view class="top_block">
+			<block wx:if="{{recipeCode}}">
+				<image mode='aspectFill' class="recipe_image" src='https://www.kidneyhealty.com.cn/images/recipe/{{recipeCode}}.jpg'></image>
+			</block>
+			<view class="right_block">
+				<view class="title_row">
+					<view class="recipe_name">{{recipeInfo.recipeName}}</view>
+				</view>
+				<view class="lable_row">
+					<block wx:for="{{recipeInfo.label}}" wx:for-item="i" wx:key="i">
+						<view class="recipe_label">{{i}}</view>
+					</block>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class='content info_block'>
+		<view class="advise title">主要食材（以菜谱实际内容为准）</view>
+		<block wx:for="{{recipe_composition}}" wx:for-item="item" wx:key="foodName">
+			<view class='gridTab' catchtap='onFoodTap' data-food-code='{{item.foodId}}'>
+				<view class='tab-box'>
+					<text class='mini-tab-header'>{{item.foodName}}</text>
+					<text class='mini-tab-info'>{{item.weight}}</text>
+				</view>
+			</view>
+		</block>
+	</view>
+
+<block wx:if="{{showCookMethodText}}">
+	<view class="info_block step-block">
+		<view class="advise title">烹饪步骤</view>
+		<block wx:if="{{!showExpand}}">
+			<view class="step" wx:for="{{cookMethodText}}" wx:for-item="item" wx:key="item">{{item}}</view>
+		</block>
+		<view wx:if="{{!showExpand && needExpand}}" class="expand-btn" bindtap="toggleBrief">...收起</view>
+		<block wx:else>
+			<view class="brief-text">{{briefText}}</view>
+			<view class="expand-btn" wx:if="{{needExpand}}" bindtap="toggleBrief">...展开</view>
+		</block>
+	</view>
+  </block>
+
+	<view class="info_block">
+		<view class="advise title">营养师建议</view>
+		<block wx:if="{{hasUserBodyInfo}}">
+			<view class="advise">{{recipeInfo.dieticianAdvice}}</view>
+		</block>
+		<block wx:else class="center">
+			<view class="slogon2 dark-green">
+				<text>{{slogon2}}</text>
+			</view>
+			<view class="questionButtonView">
+				<button bindtap='goToQuestions' class='questionButton'>{{motto}}</button>
+			</view>
+		</block>
+	</view>
+
+	<view class="info_block">
+		<text class="advise title">这是您喜欢的菜吗？</text>
+		<view class="preference-box">
+			<radio-group class="radio-group" bindchange="updatePreference">
+				<label class="radio" wx:for="{{preferenceMap}}" wx:for-item="item" wx:key="key">
+					<radio value="{{item.key}}" checked="{{item.default_checked}}"/>{{item.value}}
+				</label>
+			</radio-group>
+		</view>
+	</view>
+
+</view>

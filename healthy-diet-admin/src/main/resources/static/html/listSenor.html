@@ -1,0 +1,127 @@
+<div class="layui-fluid" style="margin-top: 20px">
+
+    <div class="layui-card layadmin-header" style="height:30px">
+        <div class="layui-breadcrumb" lay-filter="breadcrumb" style="visibility: visible;">
+            <a lay-href="">主页</a><span lay-separator="">/</span>
+            <a><cite>高级</cite></a><span lay-separator="">/</span>
+            <a><cite>Echarts集成</cite></a><span lay-separator="">/</span>
+            <a><cite>折线图</cite></a>
+        </div>
+    </div>
+
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layuiadmin-app-forum-reply" style="height: 53px">
+
+            <div class="layui-form-item" >
+                <div class="layui-inline layuiadmin-input-useradmin">
+                    <label class="layui-form-label">回帖人</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="replyer" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">回帖内容</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="content" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layuiadmin-btn-replys" data-type="reload" lay-submit="" lay-filter="LAY-app-forumreply-search">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="layui-card-body">
+            <div style="padding-bottom: 10px;">
+                <button class="layui-btn layuiadmin-btn-replys" data-type="batchdel">删除</button>
+                <button type="button" class="layui-btn" id="test11">
+                    <i class="layui-icon">&#xe67c;</i>浏览文件
+                </button>
+            </div>
+            <table class="layui-table">
+                <colgroup>
+                    <col width="150">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>昵称</th>
+                    <th>加入时间</th>
+                    <th>签名</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>贤心</td>
+                    <td>2016-11-29</td>
+                    <td>人生就像是一场修行</td>
+                </tr>
+                <tr>
+                    <td>许闲心</td>
+                    <td>2016-11-28</td>
+                    <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+                </tr>
+                </tbody>
+            </table>
+            <div id="test1"></div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    var laypage;
+    layui.use(['laypage','upload'], function(){
+        laypage = layui.laypage;
+        laypage.render({
+            elem: 'test1'
+            ,count: 100
+            ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+            ,jump: function(obj){
+                console.log(obj)
+            }
+        });
+
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#test11' //绑定元素
+            ,url: '/upload/' //上传接口
+            ,accept: 'file' //允许上传的文件类型
+            ,size: 50 //最大允许上传的文件大小
+            ,before:function (object) {
+                layer.load();
+            }
+            ,done: function(res){
+                layer.closeAll('loading');
+                //上传完毕回调
+            }
+            ,error: function(){
+                layer.closeAll('loading');
+                //请求异常回调
+            }
+        });
+    });
+
+
+    // laypage.render({
+    //     elem: 'test1'
+    //     ,count: 70 //数据总数，从服务端得到
+    //     ,jump: function(obj, first,last){
+    //         //obj包含了当前分页的所有参数，比如：
+    //         console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+    //         console.log(obj.limit); //得到每页显示的条数
+    //
+    //         //首次不执行
+    //         if(!first){
+    //             //do something
+    //         }
+    //     }
+    // });
+</script>

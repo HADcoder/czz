@@ -1,0 +1,22 @@
+.content {
+  text-align: center;
+  margin: 10rpx 50rpx;
+  color: #20492e;
+  width: 76%;
+  padding: 10rpx;
+}
+
+.big-logo-view{
+  padding-top: 60rpx;
+}
+
+#goShare {
+    color: white;
+    border: 1rpx solid white;
+    font-size: 40rpx;
+    border-radius: 40rpx;
+    background-color: #4cb16f;
+    width: 90%;
+    margin: 10rpx auto;
+    margin-top: 40rpx;
+}

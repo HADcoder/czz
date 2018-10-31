@@ -1,0 +1,103 @@
+<!--pages/suggestDiet/meal/meal.wxml-->
+<view class="page">
+	<view class="page__bd">
+		<view class="weui-search-bar">
+			<view class="weui-search-bar__form">
+				<view class="weui-search-bar__box">
+					<icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+					<input type="text" class="weui-search-bar__input" placeholder="搜索食材" value="{{inputVal}}"
+						   focus="{{inputShowed}}" bindinput="inputTyping"/>
+					<view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+						<icon type="clear" size="14"></icon>
+					</view>
+				</view>
+				<label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+					<icon class="weui-icon-search" type="search" size="14"></icon>
+					<view class="weui-search-bar__text">搜索食谱</view>
+				</label>
+			</view>
+			<view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+		</view>
+		<view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}" wx:for="{{recipeList}}"
+			  wx:for-item="item" wx:key="foodId">
+			<navigator url="../recipeDetail/recipeDetail?recipeCode={{item.recipeId}}" class="weui-cell"
+					   hover-class="weui-cell_active">
+				<view class="weui-cell__bd">
+					<view>{{item.recipeName}}</view>
+				</view>
+			</navigator>
+		</view>
+	</view>
+</view>
+
+<view class="recipe">
+<view class="{{_num==0?'active':''}}" data-index='0' bindtap='toggle'>
+	早午晚
+</view>
+<view class="{{_num==1?'active':''}}" data-index='1' bindtap='toggle'>
+	荤素
+</view>
+<!-- <view class="{{_num==2?'active':''}}" data-index='2' bindtap='toggle'>
+	菜系
+</view> -->
+</view>
+
+<swiper current="{{_num}}" class="swiper-box" duration="200" bindchange="bindChange" style='min-height:845rpx'>
+<!-- 未使用 -->
+<swiper-item>
+	<view class="recipe_article" wx:for="{{mealtime}}" wx:for-item="item" wx:key="item">
+		<view>
+			<view style="background-size:100%;"><!--background:url('../img/wyl014.png') no-repeat;-->
+				<view class="photo">
+					<image mode='aspectFill' class='food-type-img' src='{{item.picUrl}}' wx:if="{{item.picUrl.startsWith('https://')}}"></image>
+					<image mode='aspectFill' class='food-type-img' src='https://kidneyhealty.com.cn/images/item_icon.png' wx:else></image>
+				</view>
+				<view style="width:40%">
+					<text>{{item}}</text>
+				</view>
+				<view class="control">
+					<navigator url="../recipeList/recipeList?recipeType=mealtime&subKey={{item}}">打开</navigator>
+				</view>
+			</view>
+		</view>
+	</view>
+</swiper-item>
+<!-- 已使用 -->
+<swiper-item>
+	<view class="recipe_article recipe1_article1" wx:for="{{category}}" wx:for-item="item" wx:key="item">
+		<view>
+			<view style="background-size:100%;"><!--background:url('../img/wyl014.png') no-repeat;-->
+				<view class="photo">
+					<image mode='aspectFill' class='food-type-img' src='{{item.picUrl}}' wx:if="{{item.picUrl.startsWith('https://')}}"></image>
+					<image mode='aspectFill' class='food-type-img' src='https://kidneyhealty.com.cn/images/item_icon.png' wx:else></image>
+				</view>
+				<view style="width:40%">
+					<text>{{item}}</text>
+				</view>
+				<view class="control">
+					<navigator url="../recipeList/recipeList?recipeType=category&subKey={{item}}">打开</navigator>
+				</view>
+			</view>
+		</view>
+	</view>
+</swiper-item>
+<!-- 已过期 -->
+<swiper-item>
+	<view class="recipe_article recipe1_article2" wx:for="{{style}}" wx:for-item="item" wx:key="item">
+		<view>
+			<view style="background-size:100%;"><!--background:url('../img/wyl014.png') no-repeat;-->
+				<view class="photo">
+					<image mode='aspectFill' class='food-type-img' src='{{item.picUrl}}' wx:if="{{item.picUrl.startsWith('https://')}}"></image>
+					<image mode='aspectFill' class='food-type-img' src='https://kidneyhealty.com.cn/images/item_icon.png' wx:else></image>
+				</view>
+				<view>
+					<text></text>
+				</view>
+				<view class="control">
+					<navigator>打开</navigator>
+				</view>
+			</view>
+		</view>
+	</view>
+</swiper-item>
+</swiper>

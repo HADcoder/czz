@@ -1,0 +1,12 @@
+<view class="content" wx:for="{{foodListView}}" wx:for-item="item" wx:key="foodId">
+	<navigator url="../foodDetail/foodDetail?foodCode={{item.foodId}}" hover-class="navigator-hover" class="row-container">
+		<view class="con-tr">
+			<image mode='aspectFill' class="con-trimg" src='{{item.picUrl}}' wx:if="{{item.picUrl.startsWith('https://')}}"></image>
+			<image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png' wx:else></image>
+		</view>
+		<view class="con-info">
+			<view class="coin-name">{{item.foodAlias}}</view>
+			<view class="coin-info">{{item.shortIntroduction}}</view>
+		</view>
+	</navigator>
+</view>

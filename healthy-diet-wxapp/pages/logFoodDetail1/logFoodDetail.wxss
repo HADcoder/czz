@@ -1,0 +1,72 @@
+/* pages/logFoodDetail/logFoodDetail.wxss */
+@import '../../vendor/weui/weui.wxss';
+
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
+}
+.searchbar-result:before{
+    display: none;
+}
+
+.add-icon {
+    position:absolute;
+    top: 50%;
+    right: 50rpx;
+    transform: translateY(-50%);
+    width: 45rpx;
+    height: 45rpx;
+}
+
+.info_block {
+  width: 96%;
+  padding: 30rpx 20rpx;
+  margin: 0rpx auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #ffffff;
+}
+.title{
+  font-weight: bold;
+  font-size:105%;
+  margin: 0rpx;
+  margin-bottom: 10rpx;
+  padding: 0rpx 30rpx;
+  text-align: left;
+}
+
+.unit_choice { 
+  margin: 20rpx auto;
+  width: 70%;
+  text-align: center;
+  color: #929292;
+}
+.input{
+  border: 1rpx solid #929292;
+  width: 200rpx;
+  margin: 0rpx 20rpx;
+  border-radius: 5rpx;
+}
+.radio-group {
+  color: #929292;
+  margin: 15rpx auto;
+  padding-bottom: 10rpx;
+  width: 98%;
+  text-align: center;
+}
+.radio{
+  margin: 0rpx 10rpx;
+}
+.btn_group{
+  margin: 20rpx auto;
+  margin-top: 70rpx;
+  width: 70%;
+  text-align: center;
+}
+.btn {
+  border-radius: 20rpx;
+  color: #ffffff;
+  background-color: #4cb16f;
+  width: 40%;
+}

@@ -1,0 +1,80 @@
+body {
+    --blueMain: #1E9FFF;
+    --blueLight: #01AAED;
+}
+.active, .active:hover{
+    background-color: #1e95f6 !important;
+    color: #fff !important;
+}
+body .layer-custom-class .layui-layer-title{background:#1E9FFF; color:#fff; border: none;}
+body .layer-custom-class .layui-layer-btn{border-top:1px solid #E9E7E7}
+body .layer-custom-class .layui-layer-btn a{background:#1E9FFF;}
+body .layer-custom-class .layui-layer-btn .layui-layer-btn1{background:#C9C9C9;}
+.layui-text:hover a{
+    cursor: pointer;
+    text-decoration: none !important;
+}
+.layui-btn-primary:hover{
+    border:1px solid var(--blueMain) !important;
+}
+.layui-input:focus,.layui-textarea:focus{
+    border-color:var(--blueMain) !important;
+}
+.layui-form-select dl dd.layui-this{
+    background:var(--blueMain) !important;
+}
+.layui-form-radio>i:hover, .layui-form-radioed>i{
+    color:var(--blueMain) !important;
+}
+.layui-form-checked span, .layui-form-checked:hover span{
+    background-color: var(--blueMain) !important;
+}
+.layui-form-checked i, .layui-form-checked:hover i{
+    border-color: var(--blueMain) !important;
+    color:var(--blueMain);
+}
+.layui-form-checkbox[lay-skin=primary]:hover i{
+    border-color: var(--blueMain);
+}
+.layui-form-checkbox[lay-skin=primary]{
+    padding-left: 0 !important;
+}
+.layui-form-checked[lay-skin=primary] i{
+    border-color: var(--blueMain) !important;
+    background-color: var(--blueMain) !important;
+}
+.layui-laypage{
+    margin: 0 !important;
+}
+.layui-laypage a:hover{
+    color:var(--blueMain) !important;
+}
+.layui-laypage input:focus, .layui-laypage select:focus{
+    border-color: var(--blueMain) !important;
+}
+.layui-laypage .layui-laypage-curr .layui-laypage-em{
+    background-color: var(--blueMain) !important;
+}
+
+
+
+.tags-item{
+    background-color: var(--blueMain);
+    padding: 3px;
+    border-radius: 2px;
+    margin-right:3px;
+    margin-top:5px;
+    color: #fff;
+    float: left;
+}
+.tags-item i{
+    cursor: pointer;
+}
+.tags-item i:hover{
+    color: #777;
+}
+.tags-input{
+    border: none;
+    height: 36px;
+    line-height: 1.3;
+}

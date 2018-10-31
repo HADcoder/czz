@@ -1,0 +1,152 @@
+/* pages/suggestDiet/meal/meal.wxss */
+
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
+}
+.searchbar-result:before{
+    display: none;
+}
+.weui-cell{
+    padding: 12px 15px 12px 35px;
+}
+.weui-search-bar{
+    padding:30rpx;
+    background-color:#4cb16f;
+    border-top:1rpx solid #4cb16f;
+    border-bottom:1rpx solid #4cb16f}
+
+.weui-search-bar__cancel-btn{
+    color: #ffffff;
+}
+.page{
+    background-color: #F8F8F8;
+    font-size: 16px;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+    margin: 0;
+}
+
+.page__bd{
+    margin: 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: #f2f2f2;
+    margin: 0 auto;
+    padding: 30rpx;
+    text-align: center;
+}
+
+
+.templateContainer {
+    width: 27%;
+    background-color: white;
+    margin: 8rpx 15rpx;
+    border-radius: 30rpx;
+    border: 1rpx solid #cecece;
+}
+
+
+.category-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.food-type-img {
+    width: 50rpx;
+    height: 50rpx;
+    padding-bottom: 10rpx;
+    padding-top: 10rpx;
+    border: 0 solid #ff0000;
+    border-radius: 100rpx;
+    margin: 0 auto;
+}
+
+.food-type-name{
+    margin-bottom: 16rpx;
+    font-size: 30rpx;
+    color: #20492e;
+}
+
+.recipe{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+    background-color: #fff;
+    height:100rpx;
+    font-size: 32rpx;
+    border-top:1px solid #F0F0F0;
+    border-bottom:1px solid #F0F0F0;
+}
+.recipe>view{
+    display: flex;
+    align-items: center;
+}
+.active{
+    color: #fe6345;
+    border-bottom:3px solid #fe6345;
+}
+/* 有优惠 */
+.recipe_article{
+    width: 100%;
+}
+.recipe_article>view{
+    padding:15rpx 20rpx;
+    box-sizing: border-box;
+}
+.recipe_article>view>view{
+    min-height:185rpx;
+    display: flex;
+    flex-direction: row;
+    font-size: 28rpx;
+    /* justify-content: space-between; */
+    color: #000000;
+    align-items: center;
+}
+.recipe1_article1>view>view{
+    color: #000000;
+}
+.recipe1_article2>view>view{
+    color: #000000;
+}
+.photo{
+    display: flex;
+    width: 27%;
+    font-size:44rpx;
+    align-items: baseline;
+}
+.smallSize{
+    font-size: 28rpx;
+    margin-left: 30rpx;
+}
+.recipe_article>view>view>view:nth-of-type(2){
+    display: flex;
+    flex-direction: column;
+    font-size: 24rpx;
+}
+.recipe1_article1>view>view>view:nth-of-type(2){
+    color:#000000;
+}
+.recipe_article>view>view>view:nth-of-type(2)>text:nth-of-type(1){
+    font-size:38rpx;
+    margin-bottom: 30rpx;
+}
+.control{
+    margin-left:30rpx;
+}
+.control navigator{
+    width:150rpx;
+    height:65rpx;
+    line-height:55rpx;
+    background-color: #4cb16f;
+    text-align: center;
+    border-radius: 6rpx;
+    color: #fff;
+    margin: 2rpx;
+}

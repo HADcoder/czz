@@ -1,0 +1,156 @@
+@import '../../../vendor/weui/weui.wxss';
+
+/* pages/suggestDiet/meal/meal.wxss */
+
+.top_block {
+  width: 90%;
+  color: #20492e;
+  margin: 0 auto;
+  padding: 5rpx;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.food_image{
+    width:150rpx;
+    height:150rpx;
+    padding:auto 20rpx;
+}
+
+.right_block{
+  display: flex;
+  flex-direction: column;
+  padding-left: 20rpx;
+}
+
+.title_row, .lable_row {
+  padding: 5rpx 0;
+  display: flex;
+  flex-direction: row;
+  overflow-wrap:break-word;
+  flex-wrap: wrap;
+}
+
+.food_name {
+  font-size: 42rpx;
+}
+.food_label {
+  border: 1rpx solid #929292;
+  color: #929292;
+  border-radius: 15rpx;
+  text-align: center;
+  font-size: 80%;
+  padding: 2rpx 8rpx;
+  margin: 8rpx;
+}
+
+.preference-icon {
+    position:absolute;
+    top: 45rpx;
+    right: 60rpx;
+    width: 56rpx;
+    height: 56rpx;
+}
+
+.info_block {
+  width: 100%;
+  padding: 30rpx 0rpx;
+  margin: 10rpx auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #ffffff;
+}
+.advise {
+  margin: 10rpx auto;
+  width: 82%;
+  font-size: 33rpx;
+  line-height: 1.3rem;
+  text-align: left;
+  color: #20492e;
+}
+.title{
+  color: #fe6345;
+}
+.break-line{
+  border-top: 1rpx solid #cecece;
+  width: 80%;
+  margin: 8rpx auto;
+}
+.content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 8rpx 0rpx;
+    text-align: center;
+}
+.tab-box {
+  margin: 0rpx;
+}
+
+.mini-tab-header {
+  text-align: left;
+  font-size: 33rpx;
+  margin: 1rpx;
+  width: 45%;
+  background-color: #ffffff;
+  color: #20492e;
+}
+.mini-tab-info {
+  vertical-align: center;
+  font-size: 33rpx;
+  overflow-wrap:break-word;
+  word-break: break-all;
+  text-align: right;
+}
+
+.radio-group{
+  color:#20492e;
+  font-size: 33rpx;
+  padding: 10rpx;
+
+}
+.radio{
+  padding: 16rpx;
+}
+
+.questionButtonView {
+  margin: 20rpx auto;
+  width: 70%;
+}
+.questionButton {
+   border-radius: 40rpx;
+  color: #ffffff;
+  background-color: #4cb16f;
+}
+.slogon2 {
+  padding-top: 20rpx;
+  line-height: 1.8rem;
+  font-size: 38rpx;
+}
+
+.recommendWrap {
+    height: 160 rpx;
+    width: 100%;
+    display: flex;
+    display: -webkit-box;
+    flex-direction: column;
+}
+
+.recommendItem {
+    width: 160 rpx;
+    height: 160 rpx;
+    flex: 1;
+}
+
+.recommendItemText {
+    flex-direction:row;
+    flex: 2;
+    display:block;
+}
+
+.recommendItemImage {
+    flex-direction:row;
+    width: 100 rpx;
+    height: 100 rpx;
+}

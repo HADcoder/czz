@@ -1,0 +1,138 @@
+/* pages/threeDayDietReport/threeDayDietReport.wxss */
+.body-content {
+  margin: 20rpx auto;
+  text-align: center;
+  padding: 10rpx;
+}
+.header{
+  width: 90%;
+  text-align: center;
+  color:#20492e;
+  font-size: 110%;
+  font-weight: bold;
+  margin: 50rpx auto;
+  margin-bottom: 30rpx;
+}
+
+.tab-box {
+  margin: 0rpx;
+}
+.gridTab{
+  width: 80%;
+  text-align: center;
+  margin: 5rpx auto;
+}
+.mini-tab-header {
+  text-align: left;
+  margin: 1rpx;
+  width: 72%;
+  background-color: #f3f3f3;
+  color: #20492e;
+  font-size: 90%;
+}
+.mini-tab-info {
+  overflow-wrap:break-word;
+  word-break: break-all;
+  text-align: right;
+}
+
+.dieticianAdvice{
+  margin: 0 auto;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 50rpx;
+}
+.advise{
+  width: 85%;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  text-align: left;
+  color: #20492e;
+  font-size: 90%;
+}
+.adviseIndex {
+  width: 45rpx;
+  margin-right: 5rpx;
+}
+.adviseContent{
+  margin-left: 5rpx;
+}
+
+.reminder {
+  margin: 50rpx auto;
+  width: 85%;
+  text-align: left;
+  font-style: italic;
+  color: #a9a9a9;
+  font-size: 85%;
+}
+
+.knowledge-block {
+  margin: 0rpx auto;
+  text-align: left;
+  width: 85%;
+  color: #20492e;
+  border: 1px solid #20492e;
+  border-radius: 10rpx;
+  font-size: 90%;
+}
+.kheader {
+  background-color: #4cb16f;
+  color: #f3f3f3;
+  padding: 10rpx;
+  text-align: center;
+}
+.kbody{
+  padding: 10rpx 15rpx;
+}
+
+.logTypeInfo{
+  padding: 30rpx 10rpx;
+  color: #20492e;
+  text-align: left;
+  width: 85%;
+  margin: 0 auto;
+  margin-bottom: 50rpx;
+  font-size: 90%;
+}
+.basicInfoSummary{
+  width: 90%;
+  margin: 10rpx auto;
+  color: #20492e;
+}
+.basicInfo {
+    display: flex;
+    flex-direction: row;
+    overflow-wrap:break-word;
+    flex-wrap: wrap;
+    color: #20492e;
+    width: 75%;
+    margin: 0rpx auto;
+    font-size: 90%;
+}
+.bold {
+  font-style: bold;
+  margin-bottom: 20rpx;
+}
+.calendar {
+  /*background-color: #fff043;*/
+  padding-top: 10px;
+  /*box-shadow: 5px 5px 2px 1px rgba(255, 240, 67, 0.5);*/
+
+}
+.calendar_block{
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
+}
+.calendar-header {
+  font-size: large;
+  color: black;
+}
+
+.calendar-board {
+  color: #ff8a43;
+  font-size: large;
+  font-weight: bold;
+}

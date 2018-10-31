@@ -1,0 +1,278 @@
+<style>
+    .width-110{
+        width: 110px !important;
+    }
+    .width-80{
+        width: 80px !important;
+    }
+</style>
+<div class="layui-fluid" style="margin-top: 20px">
+    <!--<div class="layui-card layadmin-header" style="height:30px">
+        <div style="visibility: visible;">
+            <a>主页</a>
+            <a ng-repeat="item in navTitles">
+                <span style="margin: 0 5px;">/</span>
+                <cite>{{item}}</cite>
+            </a>
+        </div>
+    </div>-->
+
+    <div class="layui-card">
+        <div class="layui-form" style="height: 45px">
+            <div class="layui-form-item">
+                <div class="layui-inline" style="width: 350px;">
+                    <label class="layui-form-label">食材名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" ng-model="q.foodName" name="foodName" placeholder="请输入" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-normal" ng-click="query(1, pageSize)">
+                        <i class="layui-icon layui-icon-search"></i>查询
+                    </button>
+                    <button class="layui-btn layui-btn-normal" ng-click="add()">
+                        <i class="layui-icon layui-icon-add-1"></i>添加
+                    </button>
+                    <button class="layui-btn layui-btn-danger">
+                        <i class="layui-icon layui-icon-delete"></i>删除
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <table class="layui-table" lay-filter="table">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>食材名称</th>
+                    <th>食材别名</th>
+                    <th>食部</th>
+                    <th>水分</th>
+                    <th>能量</th>
+                    <th>蛋白质</th>
+                    <th>脂肪</th>
+                    <th>碳水化合物</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in modelList track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{item.food.foodName}}</td>
+                    <td>{{item.food.foodAlias}}</td>
+                    <td>{{item.food.edible}}</td>
+                    <td>{{item.food.water}}</td>
+                    <td>{{item.food.energy}}</td>
+                    <td>{{item.food.protein}}</td>
+                    <td>{{item.food.fat}}</td>
+                    <td>{{item.food.cho}}</td>
+                    <td>
+                        <a class="layui-btn layui-btn-normal layui-btn-xs">微量元素</a>
+                        <a class="layui-btn layui-btn-normal layui-btn-xs"
+                           ng-click="showWeight(item.food.foodAlias, item.foodWeight)">成分重量</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div id="pageNav"></div>
+        </div>
+    </div>
+</div>
+
+<div id="foodWeightForm" style="display: none;">
+    <div class="layui-fluid" style="margin-top: 20px">
+        <div class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+            <fieldset class="layui-elem-field">
+                <legend>{{foodWeight.foodWeightTitle}}-成分重量</legend>
+                <div class="layui-field-box">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">蛋白质</label>
+                        <div class="layui-input-inline width-80">
+                            <input class="layui-input" disabled ng-value="foodWeight.proteinWeight">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">毫克</div>
+
+                        <label class="layui-form-label">脂肪</label>
+                        <div class="layui-input-inline width-80">
+                            <input class="layui-input" disabled ng-value="foodWeight.fatWeight">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">毫克</div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">碳水化合物</label>
+                        <div class="layui-input-inline width-80">
+                            <input class="layui-input" disabled ng-value="foodWeight.choWeight">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">毫克</div>
+
+                        <label class="layui-form-label">钠</label>
+                        <div class="layui-input-inline width-80">
+                            <input class="layui-input" disabled ng-value="foodWeight.naWeight">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">微克</div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">胆固醇</label>
+                        <div class="layui-input-inline width-80">
+                            <input class="layui-input" disabled ng-value="foodWeight.cholesterolWeight">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">微克</div>
+
+                        <label class="layui-form-label">嘌呤</label>
+                        <div class="layui-input-inline width-80">
+                            <input class="layui-input" disabled ng-value="foodWeight.purineWeight">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">微克</div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="layui-form-item" style="text-align: center;">
+                <button style="position: relative;" class="layui-btn layui-btn-primary layui-layer-close">关闭</button>
+            </div>
+            <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+        </div>
+    </div>
+</div>
+
+<div id="editForm" style="display: none;">
+    <div class="layui-fluid" style="margin-top: 20px">
+        <form class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+            <fieldset class="layui-elem-field">
+                <legend>基础信息</legend>
+                <div class="layui-field-box">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">食物名称</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="foodName" lay-verify="required" placeholder="请输入"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">食物别名</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="foodAlias" lay-verify="required" placeholder="请输入"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">亚类名称</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="subName" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">食物编码</label>
+                        <div class="layui-input-inline">
+                            <select name="foodCode" lay-filter="foodCode" lay-verify="required">
+                                <option value="1">类型1</option>
+                            </select>
+                        </div>
+
+                        <label class="layui-form-label">亚类编码</label>
+                        <div class="layui-input-inline">
+                            <select name="subCode" lay-filter="subCode" lay-verify="required">
+                                <option value="1">类型1-1</option>
+                            </select>
+                        </div>
+
+                        <label class="layui-form-label">食部</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="edible" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="layui-elem-field">
+                <legend>能量组成</legend>
+                <div class="layui-field-box">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">份量单位</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="unit" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">水分</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="water" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">能量</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="energy" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">蛋白质</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="protein" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">脂肪</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="fat" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">碳水化合物</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="cho" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="layui-elem-field">
+                <legend>微量元素</legend>
+                <div class="layui-field-box">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">钙</label>
+                        <div class="layui-input-inline width-110">
+                            <input type="text" name="ca" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">钠</label>
+                        <div class="layui-input-inline width-110">
+                            <input type="text" name="na" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">钾</label>
+                        <div class="layui-input-inline width-110">
+                            <input type="text" name="k" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <label class="layui-form-label">磷</label>
+                        <div class="layui-input-inline width-110">
+                            <input type="text" name="p" lay-verify="required" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <!--<button class="layui-btn" lay-submit lay-filter="*">立即提交</button>-->
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="*">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+            <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+        </form>
+    </div>
+</div>

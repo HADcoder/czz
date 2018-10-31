@@ -1,0 +1,26 @@
+/* general page header */
+.tab-header {
+  background-color: #4cb16f;
+  color:white;
+  height: 180rpx;
+  padding:0;
+  margin:0;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 30rpx;
+}
+
+.headerText{
+  border: 2rpx solid white;
+  padding: 8rpx;
+  margin:0 auto;
+  border-radius: 50rpx;
+  font-size: 40rpx;
+  width: 60%;
+}
+
+.subHeader {
+  font-size: 35rpx;
+  margin-top: 15rpx;
+}

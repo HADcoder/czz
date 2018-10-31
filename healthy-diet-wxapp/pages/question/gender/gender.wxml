@@ -1,0 +1,28 @@
+<!--question-sex.wxml-->
+<view class="question-container dark-green">
+  <view class="big-logo-view">
+      <image class="big-logo" mode="widthFix" src="{{logoUrl}}" ></image>
+  </view>
+  <view class="question-header-view">
+    <text class="question-header">{{question}}</text>
+  </view>
+  <view class='parameter-wrap'>
+    <block wx:for="{{parameter}}" wx:key="parameter">
+    <text class='parameter-info text-over {{item.checked?"checked_parameter":""}}' data-id='{{item.id}}' bindtap='parameterTap'>{{item.name}}</text>
+    </block>
+  </view>
+
+  <view class="nextButtonView">
+    <block wx:if="{{postUpdate==false}}">
+      <button  
+        bindtap='goToNextQuestion' 
+        class='nextQuestionButton'>{{nextQuestionBtnText}}</button>
+    </block>
+    <block wx:else>
+      <button
+        bindtap='updateValue' 
+        class='nextQuestionButton'>{{updateValueBtnText}}</button>
+    </block>    
+  </view>
+
+</view>

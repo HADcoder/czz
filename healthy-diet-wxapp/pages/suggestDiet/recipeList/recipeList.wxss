@@ -1,0 +1,30 @@
+/* pages/suggestDiet/recipeList.wxss */
+@import '../../../vendor/weui/weui.wxss';
+.row-container{
+    display: flex;
+    flex-direction:row;
+    width:95%;
+    height:90rpx;
+    border: 2rpx solid #eeeeee;
+    padding:10rpx;
+    font-size: 35rpx;
+    margin:0;
+    background-color: #ffffff;
+}
+.con-trimg{
+    width:50rpx;
+    height:50rpx;
+    margin:10rpx;
+    padding-left: 30rpx;
+
+}
+.con-info{
+    margin:20rpx;
+    overflow: hidden;
+    color:#606060;
+
+}
+.coin-info{
+    line-height: 60rpx;
+    font-size: 28rpx;
+}

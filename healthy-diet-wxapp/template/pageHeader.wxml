@@ -1,0 +1,12 @@
+<template name="pageHeader">
+  
+  <view class="tab-header">
+    <view class="headerText">
+      <text>{{headerText}}</text>
+    </view>
+    <view class="subHeader">
+      <text>{{subHeader}}</text>
+    </view>
+  </view>
+
+  </template>

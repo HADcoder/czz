@@ -1,0 +1,107 @@
+/* pages/summary/summary.wxss */
+.question-container {
+  color: #4cb16f;
+  background-color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+
+} 
+
+.summaryReportButtonView {
+    margin-bottom: 40rpx;
+    color: white;
+    text-align: center;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+}
+
+#goBackMain, #goShare {
+    color: white;
+    border: 1rpx solid white;
+    font-size: 40rpx;
+    border-radius: 40rpx;
+    background-color: #4cb16f;
+    width: 70%;
+    margin: 5rpx;
+}
+
+.report-header {
+  font-weight: bold;
+  font-size: 50rpx;
+  margin: 0;
+  height: 100rpx;
+  background-color: #4cb16f;
+  color: white;
+  text-align: center;
+  padding-top:20rpx;
+}
+
+/* bar chart related */
+.canvas{
+  height: 300px;
+  text-align: center;
+  margin: 5rpx auto;
+  padding: 0rpx 20rpx;
+}
+.bar-char {
+  width: 100%;
+  text-align: center;
+  margin: 20rpx auto;
+  padding: 20rpx 0;
+}
+
+.session-title {
+  display:block;
+  font-weight: bold;
+  font-size: 45rpx;
+  color: #20492e;
+  width: 60%;
+  margin: 10rpx auto;
+  padding-bottom: 10rpx;
+  padding-top:50rpx;
+  border-bottom: 3rpx solid #c9c9c9;
+}
+
+.session-sub-title {
+  font-size: 35rpx;
+  display:block;
+  color: #20492e;
+  margin: 30rpx auto;
+  width: 85%;
+  text-align: left; 
+  line-height: 1.3rem;
+}
+
+.slogan {
+  display:block;
+  width: 90%;
+  text-align: center; 
+  margin: 30rpx; 
+  color: #fe6345;
+  font-weight: bold;
+  font-size: 45rpx;
+  font-family: 'Wawati SC',-apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+  padding: 5rpx 0;
+  border-top:1px solid #fe6345;
+  border-bottom:1px solid #fe6345;
+}
+.fixSlogan{
+  display:block;
+  width: 90%;
+  text-align: center; 
+  margin: 30rpx; 
+  font-size: 38rpx;
+  padding-bottom: 50rpx;
+  color: #20492e;
+}
+.weui-footer{
+  margin-bottom: 20rpx;
+}

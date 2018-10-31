@@ -1,0 +1,113 @@
+<!--pages/logFood/logFood.wxml-->
+<view class="page">
+
+  <view class="tab-header">
+      <view bindtap="showDatePicker" class="headerText">
+	      {{year}} - {{month}} - {{currentDate}}
+        <image mode='aspectFill' class='arrow-img-header' src='https://kidneyhealty.com.cn/images/arrow-down-white.png'></image>
+      </view>
+  </view>
+
+<view class="container">
+	<view class='progress_box' style="float:left;">
+		<canvas class="progress_bg" canvas-id="canvasProgressbg1"></canvas>
+		<canvas class="progress_canvas" canvas-id="canvasProgress1"></canvas>
+		<view class="central_text" >
+				<text class='progress_info'>{{proteinPieText}}</text>
+			<text class="ratio_info" style="color: {{protein_color}};">
+				{{proteinEaten}}%
+			</text>
+			<text class="progress_info">
+				预算{{expectedProtein}}克
+			</text>
+		</view>
+	</view>
+	<view class='progress_box' style="float:right;overflow-x: hidden;">
+		<canvas class="progress_bg" canvas-id="canvasProgressbg2"></canvas>
+		<canvas class="progress_canvas" canvas-id="canvasProgress2"></canvas>
+		<view class="central_text" >
+			<text class='progress_info'>{{energyPieText}}</text>
+			<text class="ratio_info" style="color: {{energy_color}};">
+				{{energyEaten}}%
+			</text>
+			<text class="progress_info">
+				预算{{expectedEnergy}}千卡
+			</text>
+		</view>
+	</view>
+</view>
+<view class="flex-row">
+<view class="add-button" bindtap="addFoodLog">
+	+ 添加饮食记录
+</view>
+<view class="add-button" bindtap="foodRecomment">
+	是日三餐推荐
+</view>
+</view>
+</view>
+		<!-- <view class="dark-green"><text>饮食记录</text></view> -->
+<view wx:for="{{mealtime}}" wx:for-item="item" wx:key='{{mealtime.id}}'>
+ <view class="mealtime-block" wx:if="{{mealFoodMap[item].length>0}}">
+
+	<view class="heading-block">
+		<view class="photo">
+			<image mode='aspectFill' class='meal-type-img' src='{{item.picUrl}}'
+				   wx:if="{{item.picUrl.startsWith('https://')}}"></image>
+			<image mode='aspectFill' class='meal-type-img' src='https://kidneyhealty.com.cn/images/item_icon.png'
+				   wx:else></image>
+		</view>
+		<view class="mealtime-header">{{item}}</view>
+	</view>
+
+	<view class="flex-column" wx:if="{{mealFoodMap[item].length>0}}">
+		<view wx:for-item="item2" wx:for="{{mealFoodMap[item]}}" wx:for-index="logItemIndex" class="food-list" wx:key="item2">
+			{{item2.description}}
+			<view class="control" data-mealtime="{{item}}" data-index="{{logItemIndex}}" bindtap="deleteMealDetail">
+				<image mode='aspectFill' class='meal-type-img' src='https://kidneyhealty.com.cn/images/subtract.png'></image>
+			</view>
+		</view>
+	</view>
+
+ </view>
+</view>
+
+<block wx:if="{{hasMealRecord}}">
+<view class="bottom-control">
+	<view wx:if="{{!if_show_report}}">
+		<button bindtap='switchReport' class='btn'>
+        看看我今天吃够了吗？  
+        <image mode='aspectFill' class='arrow-img' src='https://kidneyhealty.com.cn/images/arrow-down-grey.png'></image>
+    </button>
+	</view>
+	<view wx:else>
+		<button bindtap='switchReport' class='btn'>收起饮食报告</button>
+	</view>
+	<view class="report" wx:if="{{if_show_report}}">
+		<block wx:for="{{nutritionRatio}}" wx:for-item="item" wx:key="name">
+			<view class='gridTab'>
+				<view class='tab-box'>
+					<text class='mini-tab-header'>{{item.name}}</text>
+					<text class='mini-tab-info'>{{item.value}}</text>
+				</view>
+			</view>
+		</block>
+	</view>
+</view>
+</block>
+<block wx:else >
+<view class="center">
+<image mode='aspectFill' class='common-img' src='https://kidneyhealty.com.cn/images/empty_food.png'></image>
+  <view class="common_info">
+    还没有今天的记录哦
+  </view>
+  <view class="common_info">
+    添加饮食记录，获取更多营养建议！
+  </view>
+  </view>
+</block>
+
+<date-picker id="date-picker"
+			 value="{{datePickerValue}}"
+			 isShow="{{datePickerIsShow}}"
+			 bindsureclick="confirmDate"
+			 bindcancelclick="hideDatePicker"/>

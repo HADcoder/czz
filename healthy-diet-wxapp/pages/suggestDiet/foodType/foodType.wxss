@@ -1,0 +1,74 @@
+@import '../../../vendor/weui/weui.wxss';
+
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
+}
+.searchbar-result:before{
+    display: none;
+}
+.weui-cell{
+    padding: 12px 15px 12px 35px;
+}
+.weui-search-bar{
+  padding:30rpx;
+  background-color:#4cb16f;
+  border-top:1rpx solid #4cb16f;
+  border-bottom:1rpx solid #4cb16f}
+
+.weui-search-bar__cancel-btn{
+  color: #ffffff;
+}
+.page{
+    background-color: #F8F8F8;
+    font-size: 16px;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+    margin: 0;
+}
+
+.page__bd{
+  margin: 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: #f2f2f2;
+    margin: 0 auto;
+    padding: 30rpx;
+    text-align: center;
+}
+
+
+.templateContainer {
+    width: 27%;
+    background-color: white;
+    margin: 8rpx 15rpx;
+    border-radius: 30rpx;
+    border: 1rpx solid #cecece;
+}
+
+
+.category-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.food-type-img {
+    width: 50rpx;
+    height: 50rpx;
+    padding-bottom: 10rpx;
+    padding-top: 10rpx;
+    border: 0 solid #ff0000;
+    border-radius: 100rpx;
+    margin: 0 auto;
+}
+
+.food-type-name{
+    margin-bottom: 16rpx;
+    font-size: 30rpx;
+    color: #20492e;
+}

@@ -1,0 +1,4 @@
+/* pages/question/weight/weight.wxss */
+page{
+  background-color: #ffffff;
+}

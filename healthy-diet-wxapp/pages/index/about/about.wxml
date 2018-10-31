@@ -1,0 +1,14 @@
+<import src="../../../template/pageHeader.wxml"/>
+
+<view class="main-container">
+  <template is="pageHeader" data="{{...title}}"/>
+
+    <view class="big-logo-view">
+      <image class="big-logo" mode="widthFix" src="{{logoUrl}}" ></image>
+  </view>
+  <view class="content">
+      <view style="text-align:left;">{{content}}</view>
+      <button catchtap="onShareAppMessage" open-type="share" id='goShare'>好友齐分享</button>
+  </view>
+  
+</view>

@@ -1,0 +1,212 @@
+<div class="layui-fluid" style="margin-top: 20px">
+    <div class="layui-card layadmin-header" style="height:30px">
+        <div style="visibility: visible;">
+            <a>主页</a>
+            <a ng-repeat="item in navTitles">
+                <span style="margin: 0 5px;">/</span>
+                <cite>{{item}}</cite>
+            </a>
+        </div>
+    </div>
+
+    <div class="layui-card">
+        <div class="layui-form" style="height: 53px">
+            <div class="layui-form-item">
+                <div class="layui-inline" style="width: 350px;">
+                    <label class="layui-form-label">电房名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" ng-model="q.roomname" name="roomname" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-normal">
+                        <i class="layui-icon layui-icon-search"></i>查询
+                    </button>
+                    <button class="layui-btn layui-btn-normal" ng-click="addStation()">
+                        <i class="layui-icon layui-icon-add-1"></i>添加
+                    </button>
+                    <button class="layui-btn layui-btn-danger">
+                        <i class="layui-icon layui-icon-delete"></i>删除
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <table class="layui-table">
+                <colgroup>
+                    <col width="60">
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>省市区</th>
+                    <th>机房类型</th>
+                    <th>地址</th>
+                    <th>线路</th>
+                    <th>变电站名称</th>
+                    <th>电房ID</th>
+                    <th>支持厂家</th>
+                    <th>传输协议</th>
+                    <th>IP地址/端口</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>贤心</td>
+                    <td>广东省广州市天河区</td>
+                    <td>低压配电房</td>
+                    <td>天河区员村4横路</td>
+                    <td>F1</td>
+                    <td>科立下载地址</td>
+                    <td>kelixzss</td>
+                    <td>科立</td>
+                    <td>mqtt</td>
+                    <td>127.233.255:23455</td>
+                </tr>
+                </tbody>
+            </table>
+            <div id="pageNav"></div>
+        </div>
+    </div>
+</div>
+
+<div id="editForm" style="display: none;">
+    <div class="layui-fluid" style="margin-top: 20px" >
+        <form class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">省</label>
+                <div class="layui-input-inline">
+                    <select name="province" lay-filter="province" lay-verify="required">
+                        <option value="广东省">广东省</option>
+                    </select>
+                </div>
+
+                <label class="layui-form-label">市</label>
+                <div class="layui-input-inline">
+                    <select name="city" lay-filter="city" lay-verify="required">
+                        <option value="广州市">广州市</option>
+                    </select>
+                </div>
+
+                <label class="layui-form-label">区</label>
+                <div class="layui-input-inline">
+                    <select name="area" lay-filter="area" lay-verify="required">
+                        <option value="天河区">天河区</option>
+                        <option value="白云区">白云区</option>
+                        <option value="荔湾区">荔湾区</option>
+                        <option value="增城区">增城区</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="width: 920px;">
+                <label class="layui-form-label">电房地址</label>
+                <div class="layui-input-block">
+                    <input type="text" name="address" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">变电站名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="stationname" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+
+                <label class="layui-form-label">馈线</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="line" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+
+                <label class="layui-form-label">电房名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="roomname" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">电房ID</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="devID" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+
+                <label class="layui-form-label">电房类型</label>
+                <div class="layui-input-inline">
+                    <select name="roomtype" lay-filter="roomtype" lay-verify="required">
+                        <option value="1">开关房</option>
+                        <option value="2">低压配电房</option>
+                        <option value="3">公变房</option>
+                        <option value="4">综合房</option>
+                    </select>
+                </div>
+
+                <label class="layui-form-label">通讯协议</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="protocol" value="mqtt" title="mqtt" lay-filter="protocol" checked>
+                    <input type="radio" name="protocol" value="104" title="104" lay-filter="protocol">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">经度</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="pointx" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+
+                <label class="layui-form-label">纬度</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="pointy" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+
+                <label class="layui-form-label">IP地址/端口</label>
+                <div class="layui-input-inline" style="width: 120px;">
+                    <input type="text" name="ipaddress" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+                <!--<div class="layui-form-mid">:</div>-->
+                <div class="layui-input-inline" style="width: 60px;">
+                    <input type="text" name="ipport" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <!--<button class="layui-btn" lay-submit lay-filter="*">立即提交</button>-->
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="*">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+            <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+        </form>
+    </div>
+</div>
+
+<script>
+    var laypage;
+    layui.use('laypage', function () {
+        laypage = layui.laypage;
+        laypage.render({
+            elem: 'pageNav'
+            , count: 100
+            , layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+            , jump: function (obj, first) {
+                // console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                // console.log(obj.limit); //得到每页显示的条数
+
+                //首次不执行
+                if(!first){
+                    //do something
+                }
+            }
+            , theme: '#1E9FFF'
+        });
+    });
+</script>

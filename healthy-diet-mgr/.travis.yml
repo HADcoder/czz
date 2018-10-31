@@ -1,0 +1,11 @@
+language: java
+services:
+- docker
+cache:
+  directories:
+  - "$HOME/.m2"
+jdk: oraclejdk8
+before_install:
+  - chmod +x mvnw
+install:
+  - mvn clean package -DskipTests=true -Dmaven.javadoc.skip=true

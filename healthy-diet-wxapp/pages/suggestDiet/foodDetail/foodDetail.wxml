@@ -1,0 +1,71 @@
+<view class="page">
+	<view class="info_block">
+		<view class="top_block">
+			<!-- <block wx:if="{{item.picUrl.startsWith('https://')}}">
+				<image mode='aspectFill' class="food_image" src='{{item.picUrl}}'></image>
+			</block> -->
+			<view class="right_block">
+				<view class="title_row">
+					<view class="food_name">{{foodInfo.alias}}</view>
+				</view>
+				<view class="lable_row">
+					<block wx:for="{{foodInfo.label}}" wx:for-item="i" wx:key="i">
+						<view class="food_label">{{i}}</view>
+					</block>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class='content info_block'>
+		<view class="advise title">重要成分列表（每100克）</view>
+		<block wx:for="{{food_composition}}" wx:for-item="item" wx:key="name">
+			<view class='gridTab' catchtap='onFoodTypeTap' data-food-code='{{item.foodTypeCode}}'>
+				<view class='tab-box'>
+					<text class='mini-tab-header'>{{item.name}}</text>
+					<text class='mini-tab-info'>{{item.value}}</text>
+				</view>
+			</view>
+		</block>
+	</view>
+
+	<view class="info_block">
+		<view class="advise title">营养师建议</view>
+		<block wx:if="{{hasUserBodyInfo}}">
+			<view class="advise">{{foodInfo.dieticianAdvice}}</view>
+		</block>
+		<block wx:else class="center">
+			<view class="slogon2 dark-green">
+				<text>{{slogon2}}</text>
+			</view>
+			<view class="questionButtonView">
+				<button bindtap='goToQuestions' class='questionButton'>{{motto}}</button>
+			</view>
+		</block>
+	</view>
+
+	<view class="info_block">
+		<text class="advise title">这是您喜欢的食材吗？</text>
+		<view class="preference-box">
+			<radio-group class="radio-group" bindchange="updatePreference">
+				<label class="radio" wx:for="{{preferenceMap}}" wx:for-item="item" wx:key="key">
+					<radio value="{{item.key}}" checked="{{item.default_checked}}"/>{{item.value}}
+				</label>
+			</radio-group>
+		</view>
+	</view>
+
+	<view class="info_block" wx:if="{{recipeList.length > 0}}">
+		<text class="advise title">精选菜品推荐</text>
+		<view class="preference-box">
+			<scroll-view scroll-x="true">
+				<view class="recommendWrap" scroll-x="true" >
+					<view class="recommendItem" bindtap="jumpRecipe" data-recipe-code="{{item.recipeId}}" wx:for="{{recipeList}}" wx:for-item="item" wx:key="recipeId">
+						<image class="recommendItemImage" src="https://kidneyhealty.com.cn/images/recipe/recipe_default.jpg"></image>
+						<text class="recommendItemText">{{item.recipeName}}</text>
+					</view>
+				</view>
+			</scroll-view>
+		</view>
+	</view>
+
+</view>

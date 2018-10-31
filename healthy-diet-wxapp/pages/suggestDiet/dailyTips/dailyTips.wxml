@@ -1,0 +1,36 @@
+<import src="../../../template/pageHeader.wxml"/>
+
+<view class="main-container">
+    
+  <view class="tab-header">
+    <view class="headerText">
+      <text>{{headerText}}</text>
+    </view>
+    <view class="subHeader">
+      <button bindtap='refreshRecommendation' id='refreshRecommendation'>{{subHeader}}</button>
+    </view>
+  </view>
+  
+  <view class="mealList">
+  <view wx:for="{{mealList}}" wx:for-item="item" wx:key='{{mealList.id}}'>
+    <view class="mealtime-block">
+        <view class="heading-block">
+          <view class="mealtime-header">{{item.meatime}}</view>
+        </view>
+		<view wx:for-item="item2" wx:for="{{item.recipeList}}" wx:key="item2" wx:if="{{item.recipeList.length>0}}" style="overflow-x:hidden">
+			<navigator url="../recipeDetail/recipeDetail?recipeCode={{item2.recipeId}}" hover-class="navigator-hover" class="row-container">
+				<view>
+					<image mode='aspectFill' class="con-trimg" src='{{item2.picUrl}}' wx:if="{{item2.picUrl.startsWith('https://')}}"></image>
+					<image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png' wx:else></image>
+				</view>
+				<view class="con-info">
+					<view class="coin-name">{{item2.recipeName}}</view>
+					<view class="coin-info">{{item2.shortIntroduction}}</view>
+				</view>
+        <view class="con-right">{{item2.protein}} ></view>
+			</navigator>
+		</view>
+    </view>
+  </view>
+  </view>
+</view>

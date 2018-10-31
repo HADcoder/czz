@@ -1,0 +1,4 @@
+/* pages/question/sportRate/sportRate.wxss */
+page{
+  background-color: #ffffff;
+}

@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<import src="../../template/menuList.wxml"/>
+
+<view class="main-container">
+      <view class="header-backgroup"></view>
+      <view class="userinfo-before">
+        <block wx:if="{{!hasUserInfo && canIUse}}">       
+          <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="logo_btn"> 
+            <image class="userinfo-avatar" src="{{logoUrl}}" background-size="cover"></image>
+          </button>
+        </block>
+        <block wx:else>
+          <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        </block>
+      </view>
+ 
+  <block>
+    <template is="menuWithIconAndRightImage" data="{{...menu}}"/>
+  </block>
+</view>
